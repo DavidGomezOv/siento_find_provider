@@ -6,6 +6,8 @@ class FindProviderState with _$FindProviderState {
 
   const factory FindProviderState.loaded({
     required List<ProviderModel> providers,
+    required List<ProviderModel> filteredList,
+    @Default(ProviderType.all) ProviderType selectedFilter,
   }) = _LoadedState;
 
   const factory FindProviderState.failedToLoad({

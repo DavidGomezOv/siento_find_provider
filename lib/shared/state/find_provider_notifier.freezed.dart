@@ -19,21 +19,27 @@ mixin _$FindProviderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ProviderModel> providers) loaded,
+    required TResult Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)
+        loaded,
     required TResult Function(String errorMessage) failedToLoad,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ProviderModel> providers)? loaded,
+    TResult? Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)?
+        loaded,
     TResult? Function(String errorMessage)? failedToLoad,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ProviderModel> providers)? loaded,
+    TResult Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)?
+        loaded,
     TResult Function(String errorMessage)? failedToLoad,
     required TResult orElse(),
   }) =>
@@ -125,7 +131,9 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ProviderModel> providers) loaded,
+    required TResult Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)
+        loaded,
     required TResult Function(String errorMessage) failedToLoad,
   }) {
     return loading();
@@ -135,7 +143,9 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ProviderModel> providers)? loaded,
+    TResult? Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)?
+        loaded,
     TResult? Function(String errorMessage)? failedToLoad,
   }) {
     return loading?.call();
@@ -145,7 +155,9 @@ class _$LoadingStateImpl implements _LoadingState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ProviderModel> providers)? loaded,
+    TResult Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)?
+        loaded,
     TResult Function(String errorMessage)? failedToLoad,
     required TResult orElse(),
   }) {
@@ -200,7 +212,10 @@ abstract class _$$LoadedStateImplCopyWith<$Res> {
           _$LoadedStateImpl value, $Res Function(_$LoadedStateImpl) then) =
       __$$LoadedStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ProviderModel> providers});
+  $Res call(
+      {List<ProviderModel> providers,
+      List<ProviderModel> filteredList,
+      ProviderType selectedFilter});
 }
 
 /// @nodoc
@@ -217,12 +232,22 @@ class __$$LoadedStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? providers = null,
+    Object? filteredList = null,
+    Object? selectedFilter = null,
   }) {
     return _then(_$LoadedStateImpl(
       providers: null == providers
           ? _value._providers
           : providers // ignore: cast_nullable_to_non_nullable
               as List<ProviderModel>,
+      filteredList: null == filteredList
+          ? _value._filteredList
+          : filteredList // ignore: cast_nullable_to_non_nullable
+              as List<ProviderModel>,
+      selectedFilter: null == selectedFilter
+          ? _value.selectedFilter
+          : selectedFilter // ignore: cast_nullable_to_non_nullable
+              as ProviderType,
     ));
   }
 }
@@ -230,8 +255,12 @@ class __$$LoadedStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedStateImpl implements _LoadedState {
-  const _$LoadedStateImpl({required final List<ProviderModel> providers})
-      : _providers = providers;
+  const _$LoadedStateImpl(
+      {required final List<ProviderModel> providers,
+      required final List<ProviderModel> filteredList,
+      this.selectedFilter = ProviderType.all})
+      : _providers = providers,
+        _filteredList = filteredList;
 
   final List<ProviderModel> _providers;
   @override
@@ -241,9 +270,21 @@ class _$LoadedStateImpl implements _LoadedState {
     return EqualUnmodifiableListView(_providers);
   }
 
+  final List<ProviderModel> _filteredList;
+  @override
+  List<ProviderModel> get filteredList {
+    if (_filteredList is EqualUnmodifiableListView) return _filteredList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_filteredList);
+  }
+
+  @override
+  @JsonKey()
+  final ProviderType selectedFilter;
+
   @override
   String toString() {
-    return 'FindProviderState.loaded(providers: $providers)';
+    return 'FindProviderState.loaded(providers: $providers, filteredList: $filteredList, selectedFilter: $selectedFilter)';
   }
 
   @override
@@ -252,12 +293,19 @@ class _$LoadedStateImpl implements _LoadedState {
         (other.runtimeType == runtimeType &&
             other is _$LoadedStateImpl &&
             const DeepCollectionEquality()
-                .equals(other._providers, _providers));
+                .equals(other._providers, _providers) &&
+            const DeepCollectionEquality()
+                .equals(other._filteredList, _filteredList) &&
+            (identical(other.selectedFilter, selectedFilter) ||
+                other.selectedFilter == selectedFilter));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_providers));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_providers),
+      const DeepCollectionEquality().hash(_filteredList),
+      selectedFilter);
 
   /// Create a copy of FindProviderState
   /// with the given fields replaced by the non-null parameter values.
@@ -271,32 +319,38 @@ class _$LoadedStateImpl implements _LoadedState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ProviderModel> providers) loaded,
+    required TResult Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)
+        loaded,
     required TResult Function(String errorMessage) failedToLoad,
   }) {
-    return loaded(providers);
+    return loaded(providers, filteredList, selectedFilter);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ProviderModel> providers)? loaded,
+    TResult? Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)?
+        loaded,
     TResult? Function(String errorMessage)? failedToLoad,
   }) {
-    return loaded?.call(providers);
+    return loaded?.call(providers, filteredList, selectedFilter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ProviderModel> providers)? loaded,
+    TResult Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)?
+        loaded,
     TResult Function(String errorMessage)? failedToLoad,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(providers);
+      return loaded(providers, filteredList, selectedFilter);
     }
     return orElse();
   }
@@ -337,10 +391,14 @@ class _$LoadedStateImpl implements _LoadedState {
 }
 
 abstract class _LoadedState implements FindProviderState {
-  const factory _LoadedState({required final List<ProviderModel> providers}) =
-      _$LoadedStateImpl;
+  const factory _LoadedState(
+      {required final List<ProviderModel> providers,
+      required final List<ProviderModel> filteredList,
+      final ProviderType selectedFilter}) = _$LoadedStateImpl;
 
   List<ProviderModel> get providers;
+  List<ProviderModel> get filteredList;
+  ProviderType get selectedFilter;
 
   /// Create a copy of FindProviderState
   /// with the given fields replaced by the non-null parameter values.
@@ -420,7 +478,9 @@ class _$FailedToLoadStateImpl implements _FailedToLoadState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ProviderModel> providers) loaded,
+    required TResult Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)
+        loaded,
     required TResult Function(String errorMessage) failedToLoad,
   }) {
     return failedToLoad(errorMessage);
@@ -430,7 +490,9 @@ class _$FailedToLoadStateImpl implements _FailedToLoadState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ProviderModel> providers)? loaded,
+    TResult? Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)?
+        loaded,
     TResult? Function(String errorMessage)? failedToLoad,
   }) {
     return failedToLoad?.call(errorMessage);
@@ -440,7 +502,9 @@ class _$FailedToLoadStateImpl implements _FailedToLoadState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ProviderModel> providers)? loaded,
+    TResult Function(List<ProviderModel> providers,
+            List<ProviderModel> filteredList, ProviderType selectedFilter)?
+        loaded,
     TResult Function(String errorMessage)? failedToLoad,
     required TResult orElse(),
   }) {

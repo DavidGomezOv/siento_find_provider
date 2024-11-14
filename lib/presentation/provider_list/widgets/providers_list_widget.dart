@@ -26,14 +26,14 @@ class _ProvidersListState extends ConsumerState<ProvidersListWidget> {
     final provider = ref.watch(notifierProvider);
     return provider.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      loaded: (providers) => ListView.builder(
-        itemCount: providers.length,
+      loaded: (_, filteredList, __) => ListView.builder(
+        itemCount: filteredList.length,
         itemBuilder: (context, index) => ProviderListItemWidget(
-          currentProvider: providers[index],
+          currentProvider: filteredList[index],
           onTap: () {
             context.goNamed(
               AppRouter.providerDetailRouteData.name,
-              extra: providers[index],
+              extra: filteredList[index],
             );
           },
         ),

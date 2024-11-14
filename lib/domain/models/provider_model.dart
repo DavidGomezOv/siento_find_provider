@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:siento_find_provider/core/enums.dart';
 import 'package:siento_find_provider/domain/models/provider_client_focus_model.dart';
+import 'package:collection/collection.dart';
 
 part 'provider_model.freezed.dart';
 
@@ -18,6 +20,7 @@ class ProviderModel with _$ProviderModel {
     @Default('') String milesAway,
     @Default('') String phone,
     @Default('') String email,
+    @Default(ProviderType.all) ProviderType providerType,
     @Default([]) List<String> connectionMethod,
     @Default(false) bool inYourInsuranceNetwork,
     @Default(false) bool coveredByYourEpa,
@@ -41,6 +44,9 @@ class ProviderModel with _$ProviderModel {
       milesAway: json['milesAway'] ?? '',
       phone: json['phone'] ?? '',
       email: json['email'] ?? '',
+      providerType: ProviderType.values.firstWhereOrNull((element) =>
+              element.name.toLowerCase() == (json['type'] ?? '').toString().toLowerCase()) ??
+          ProviderType.all,
       connectionMethod:
           json['connectionMethod'] != null ? json['connectionMethod'].cast<String>() : [],
       inYourInsuranceNetwork: json['inYourInsuranceNetwork'] ?? false,

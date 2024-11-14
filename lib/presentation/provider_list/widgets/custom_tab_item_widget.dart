@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:siento_find_provider/core/enums.dart';
 import 'package:siento_find_provider/theme/ui_colors.dart';
 import 'package:siento_find_provider/theme/ui_text_style.dart';
 
 class CustomTabItemWidget extends StatelessWidget {
   const CustomTabItemWidget({
     super.key,
-    required this.label,
+    required this.providerType,
     required this.onTap,
     required this.isSelected,
     this.lastItem = false,
   });
 
-  final String label;
-  final Function(String label) onTap;
+  final ProviderType providerType;
+  final Function(ProviderType providerType) onTap;
   final bool isSelected;
   final bool lastItem;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onTap(label),
+      onTap: () => onTap(providerType),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         alignment: Alignment.center,
@@ -33,7 +34,7 @@ class CustomTabItemWidget extends StatelessWidget {
         ),
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Text(
-          label,
+          providerType.displayValue,
           style: UiTextStyle.tabsTextStyle.copyWith(
             color: isSelected ? UiColors.white : Colors.black,
             fontWeight: FontWeight.bold,

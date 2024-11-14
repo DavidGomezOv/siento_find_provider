@@ -25,6 +25,7 @@ mixin _$ProviderModel {
   String get milesAway => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  ProviderType get providerType => throw _privateConstructorUsedError;
   List<String> get connectionMethod => throw _privateConstructorUsedError;
   bool get inYourInsuranceNetwork => throw _privateConstructorUsedError;
   bool get coveredByYourEpa => throw _privateConstructorUsedError;
@@ -60,6 +61,7 @@ abstract class $ProviderModelCopyWith<$Res> {
       String milesAway,
       String phone,
       String email,
+      ProviderType providerType,
       List<String> connectionMethod,
       bool inYourInsuranceNetwork,
       bool coveredByYourEpa,
@@ -98,6 +100,7 @@ class _$ProviderModelCopyWithImpl<$Res, $Val extends ProviderModel>
     Object? milesAway = null,
     Object? phone = null,
     Object? email = null,
+    Object? providerType = null,
     Object? connectionMethod = null,
     Object? inYourInsuranceNetwork = null,
     Object? coveredByYourEpa = null,
@@ -146,6 +149,10 @@ class _$ProviderModelCopyWithImpl<$Res, $Val extends ProviderModel>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      providerType: null == providerType
+          ? _value.providerType
+          : providerType // ignore: cast_nullable_to_non_nullable
+              as ProviderType,
       connectionMethod: null == connectionMethod
           ? _value.connectionMethod
           : connectionMethod // ignore: cast_nullable_to_non_nullable
@@ -218,6 +225,7 @@ abstract class _$$ProviderModelImplCopyWith<$Res>
       String milesAway,
       String phone,
       String email,
+      ProviderType providerType,
       List<String> connectionMethod,
       bool inYourInsuranceNetwork,
       bool coveredByYourEpa,
@@ -255,6 +263,7 @@ class __$$ProviderModelImplCopyWithImpl<$Res>
     Object? milesAway = null,
     Object? phone = null,
     Object? email = null,
+    Object? providerType = null,
     Object? connectionMethod = null,
     Object? inYourInsuranceNetwork = null,
     Object? coveredByYourEpa = null,
@@ -303,6 +312,10 @@ class __$$ProviderModelImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      providerType: null == providerType
+          ? _value.providerType
+          : providerType // ignore: cast_nullable_to_non_nullable
+              as ProviderType,
       connectionMethod: null == connectionMethod
           ? _value._connectionMethod
           : connectionMethod // ignore: cast_nullable_to_non_nullable
@@ -360,6 +373,7 @@ class _$ProviderModelImpl extends _ProviderModel {
       this.milesAway = '',
       this.phone = '',
       this.email = '',
+      this.providerType = ProviderType.all,
       final List<String> connectionMethod = const [],
       this.inYourInsuranceNetwork = false,
       this.coveredByYourEpa = false,
@@ -402,6 +416,9 @@ class _$ProviderModelImpl extends _ProviderModel {
   @override
   @JsonKey()
   final String email;
+  @override
+  @JsonKey()
+  final ProviderType providerType;
   final List<String> _connectionMethod;
   @override
   @JsonKey()
@@ -454,7 +471,7 @@ class _$ProviderModelImpl extends _ProviderModel {
 
   @override
   String toString() {
-    return 'ProviderModel(id: $id, name: $name, imageUrl: $imageUrl, specialty: $specialty, description: $description, endorsedTimes: $endorsedTimes, milesAway: $milesAway, phone: $phone, email: $email, connectionMethod: $connectionMethod, inYourInsuranceNetwork: $inYourInsuranceNetwork, coveredByYourEpa: $coveredByYourEpa, vettedByYourDepartment: $vettedByYourDepartment, preferences: $preferences, specialtyAndExpertise: $specialtyAndExpertise, clientFocus: $clientFocus, treatmentApproaches: $treatmentApproaches, qualifications: $qualifications, lastUpdated: $lastUpdated)';
+    return 'ProviderModel(id: $id, name: $name, imageUrl: $imageUrl, specialty: $specialty, description: $description, endorsedTimes: $endorsedTimes, milesAway: $milesAway, phone: $phone, email: $email, providerType: $providerType, connectionMethod: $connectionMethod, inYourInsuranceNetwork: $inYourInsuranceNetwork, coveredByYourEpa: $coveredByYourEpa, vettedByYourDepartment: $vettedByYourDepartment, preferences: $preferences, specialtyAndExpertise: $specialtyAndExpertise, clientFocus: $clientFocus, treatmentApproaches: $treatmentApproaches, qualifications: $qualifications, lastUpdated: $lastUpdated)';
   }
 
   @override
@@ -476,6 +493,8 @@ class _$ProviderModelImpl extends _ProviderModel {
                 other.milesAway == milesAway) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.providerType, providerType) ||
+                other.providerType == providerType) &&
             const DeepCollectionEquality()
                 .equals(other._connectionMethod, _connectionMethod) &&
             (identical(other.inYourInsuranceNetwork, inYourInsuranceNetwork) ||
@@ -510,6 +529,7 @@ class _$ProviderModelImpl extends _ProviderModel {
         milesAway,
         phone,
         email,
+        providerType,
         const DeepCollectionEquality().hash(_connectionMethod),
         inYourInsuranceNetwork,
         coveredByYourEpa,
@@ -542,6 +562,7 @@ abstract class _ProviderModel extends ProviderModel {
       final String milesAway,
       final String phone,
       final String email,
+      final ProviderType providerType,
       final List<String> connectionMethod,
       final bool inYourInsuranceNetwork,
       final bool coveredByYourEpa,
@@ -572,6 +593,8 @@ abstract class _ProviderModel extends ProviderModel {
   String get phone;
   @override
   String get email;
+  @override
+  ProviderType get providerType;
   @override
   List<String> get connectionMethod;
   @override
