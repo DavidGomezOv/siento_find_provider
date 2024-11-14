@@ -1,0 +1,13 @@
+# This is a generated file; do not edit or check into version control.
+cloud_firestore=/Users/sientoproject/.pub-cache/hosted/pub.dev/cloud_firestore-5.4.5/
+cloud_firestore_web=/Users/sientoproject/.pub-cache/hosted/pub.dev/cloud_firestore_web-4.3.3/
+firebase_core=/Users/sientoproject/.pub-cache/hosted/pub.dev/firebase_core-3.7.0/
+firebase_core_web=/Users/sientoproject/.pub-cache/hosted/pub.dev/firebase_core_web-2.18.1/
+path_provider=/Users/sientoproject/.pub-cache/hosted/pub.dev/path_provider-2.1.5/
+path_provider_android=/Users/sientoproject/.pub-cache/hosted/pub.dev/path_provider_android-2.2.12/
+path_provider_foundation=/Users/sientoproject/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
+path_provider_linux=/Users/sientoproject/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+path_provider_windows=/Users/sientoproject/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+sqflite=/Users/sientoproject/.pub-cache/hosted/pub.dev/sqflite-2.4.1/
+sqflite_android=/Users/sientoproject/.pub-cache/hosted/pub.dev/sqflite_android-2.4.0/
+sqflite_darwin=/Users/sientoproject/.pub-cache/hosted/pub.dev/sqflite_darwin-2.4.1/
