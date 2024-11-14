@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:siento_find_provider/core/enums.dart';
-import 'package:siento_find_provider/domain/models/provider_client_focus_model.dart';
+import 'package:siento_find_provider/domain/models/provider/provider_client_focus_model.dart';
 import 'package:collection/collection.dart';
 
 part 'provider_model.freezed.dart';

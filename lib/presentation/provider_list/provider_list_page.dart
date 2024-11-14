@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:siento_find_provider/presentation/provider_list/widgets/instructions_dialog_widget.dart';
+import 'package:siento_find_provider/shared/preferences/preferences_di_helper.dart';
 import 'package:siento_find_provider/theme/ui_colors.dart';
 import 'package:siento_find_provider/presentation/provider_list/widgets/custom_tabs_widget.dart';
 import 'package:siento_find_provider/presentation/provider_list/widgets/providers_list_widget.dart';
@@ -52,22 +54,27 @@ class _ProviderListPageState extends State<ProviderListPage> {
             padding: const EdgeInsets.only(top: 14, left: 14),
             child: Align(
               alignment: Alignment.topLeft,
-              child: GestureDetector(
-                onTap: () => context.goNamed(AppRouter.providerPreferencesRouteData.name),
-                child: Row(
-                  children: [
-                    const Icon(Icons.manage_accounts_outlined, color: UiColors.intenseGrey),
-                    Text('Preferences',
-                        style: UiTextStyle.personNameRow
-                            .copyWith(decoration: TextDecoration.underline))
-                  ],
+              child: Consumer(
+                builder: (context, ref, child) => GestureDetector(
+                  onTap: () {
+                    ref.watch(preferencesNotifierProvider.notifier).getAllPreferences();
+                    context.goNamed(AppRouter.providerPreferencesRouteData.name);
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(Icons.manage_accounts_outlined, color: UiColors.intenseGrey),
+                      Text('Preferences',
+                          style: UiTextStyle.personNameRow
+                              .copyWith(decoration: TextDecoration.underline))
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
           const SizedBox(height: 10),
           const CustomTabsWidget(),
-          const SizedBox(height: 20),
+          const SizedBox(height: 14),
           const Flexible(child: ProvidersListWidget()),
         ],
       ),

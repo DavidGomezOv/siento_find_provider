@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:siento_find_provider/shared/preferences/preferences_di_helper.dart';
 import 'package:siento_find_provider/theme/ui_colors.dart';
 import 'package:siento_find_provider/presentation/preferences/widgets/preference_item_widget.dart';
 import 'package:siento_find_provider/routes/app_router.dart';
@@ -35,41 +37,61 @@ class PreferencesPage extends StatelessWidget {
               ),
               Text('Preferences', style: UiTextStyle.headerPreferencesTextStyle),
               const SizedBox(height: 20),
-              PreferenceItemWidget(
-                icon: Icons.place_outlined,
-                title: 'Location',
-                description: 'Help us find your best fit by narrowing down where to look.',
-                onTap: () {},
-              ),
-              PreferenceItemWidget(
-                icon: Icons.medical_information_outlined,
-                title: 'Insurance',
-                description: 'Help us find providers who can bill your insurance first instead of you!',
-                onTap: () {},
-              ),
-              PreferenceItemWidget(
-                icon: Icons.inventory_2_outlined,
-                title: 'Topics of Interest',
-                description: 'Match with someone who really understands your specific concerns.',
-                onTap: () {},
-              ),
-              PreferenceItemWidget(
-                icon: Icons.chair_outlined,
-                title: 'Service Type',
-                description: 'Help us narrow down specifically how you’d like to receive help.',
-                onTap: () {},
-              ),
-              PreferenceItemWidget(
-                icon: Icons.groups_outlined,
-                title: 'Culture & Faith',
-                description: 'Match with a provider who knows about your point of view on life.',
-                onTap: () {},
-              ),
-              PreferenceItemWidget(
-                icon: Icons.transgender_outlined,
-                title: 'Gender & Sexuality',
-                description: 'Help us find a provider who makes you feel extra safe and supported.',
-                onTap: () {},
+              Consumer(
+                builder: (context, ref, child) {
+                  final preferencesProvider = ref.watch(preferencesNotifierProvider);
+                  return preferencesProvider.when(
+                    loading: () => const Center(child: CircularProgressIndicator()),
+                    loaded: (preferences) => Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        PreferenceItemWidget(
+                          icon: Icons.place_outlined,
+                          title: 'Location',
+                          description:
+                              'Help us find your best fit by narrowing down where to look.',
+                          onTap: () {},
+                        ),
+                        PreferenceItemWidget(
+                          icon: Icons.medical_information_outlined,
+                          title: 'Insurance',
+                          description:
+                              'Help us find providers who can bill your insurance first instead of you!',
+                          onTap: () {},
+                        ),
+                        PreferenceItemWidget(
+                          icon: Icons.inventory_2_outlined,
+                          title: 'Topics of Interest',
+                          description:
+                              'Match with someone who really understands your specific concerns.',
+                          onTap: () {},
+                        ),
+                        PreferenceItemWidget(
+                          icon: Icons.chair_outlined,
+                          title: 'Service Type',
+                          description:
+                              'Help us narrow down specifically how you’d like to receive help.',
+                          onTap: () {},
+                        ),
+                        PreferenceItemWidget(
+                          icon: Icons.groups_outlined,
+                          title: 'Culture & Faith',
+                          description:
+                              'Match with a provider who knows about your point of view on life.',
+                          onTap: () {},
+                        ),
+                        PreferenceItemWidget(
+                          icon: Icons.transgender_outlined,
+                          title: 'Gender & Sexuality',
+                          description:
+                              'Help us find a provider who makes you feel extra safe and supported.',
+                          onTap: () {},
+                        ),
+                      ],
+                    ),
+                    failedToLoad: (errorMessage) => Container(),
+                  );
+                },
               ),
             ],
           ),

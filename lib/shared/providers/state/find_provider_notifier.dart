@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:siento_find_provider/core/enums.dart';
-import 'package:siento_find_provider/domain/models/provider_model.dart';
+import 'package:siento_find_provider/domain/models/provider/provider_model.dart';
 import 'package:siento_find_provider/domain/use_cases/find_provider_use_cases.dart';
 
 part 'find_provider_state.dart';

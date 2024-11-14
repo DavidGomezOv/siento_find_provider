@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:siento_find_provider/domain/models/provider_model.dart';
+import 'package:siento_find_provider/domain/models/provider/provider_model.dart';
 import 'package:siento_find_provider/presentation/preferences/preferences_page.dart';
 import 'package:siento_find_provider/presentation/provider_detail/provider_detail_page.dart';
 import 'package:siento_find_provider/presentation/provider_list/provider_list_page.dart';

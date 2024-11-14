@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:siento_find_provider/theme/ui_colors.dart';
-import 'package:siento_find_provider/domain/models/provider_client_focus_model.dart';
-import 'package:siento_find_provider/domain/models/provider_model.dart';
+import 'package:siento_find_provider/domain/models/provider/provider_client_focus_model.dart';
+import 'package:siento_find_provider/domain/models/provider/provider_model.dart';
 import 'package:siento_find_provider/presentation/widgets/provider_specific_information_widget.dart';
 import 'package:siento_find_provider/theme/ui_text_style.dart';
 

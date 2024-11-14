@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:siento_find_provider/theme/ui_colors.dart';
-import 'package:siento_find_provider/domain/models/provider_model.dart';
+import 'package:siento_find_provider/domain/models/provider/provider_model.dart';
 import 'package:siento_find_provider/presentation/provider_detail/widgets/provider_detail_additional_information_widget.dart';
 import 'package:siento_find_provider/presentation/provider_detail/widgets/provider_detail_contact_buttons_widget.dart';
 import 'package:siento_find_provider/presentation/provider_detail/widgets/provider_detail_header_widget.dart';
