@@ -46,37 +46,45 @@ class _ProviderListPageState extends State<ProviderListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: UiColors.onboardingBlue,
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 14, left: 14),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Consumer(
-                builder: (context, ref, child) => GestureDetector(
-                  onTap: () {
-                    ref.watch(preferencesNotifierProvider.notifier).getAllPreferences();
-                    context.goNamed(AppRouter.providerPreferencesRouteData.name);
-                  },
-                  child: Row(
-                    children: [
-                      const Icon(Icons.manage_accounts_outlined, color: UiColors.intenseGrey),
-                      Text('Preferences',
-                          style: UiTextStyle.personNameRow
-                              .copyWith(decoration: TextDecoration.underline))
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            padding: EdgeInsets.only(top: 14, left: 14),
+            child: _PreferencesButtonWidget(),
           ),
-          const SizedBox(height: 10),
-          const CustomTabsWidget(),
-          const SizedBox(height: 14),
-          const Flexible(child: ProvidersListWidget()),
+          SizedBox(height: 10),
+          CustomTabsWidget(),
+          SizedBox(height: 14),
+          Flexible(child: ProvidersListWidget()),
         ],
+      ),
+    );
+  }
+}
+
+class _PreferencesButtonWidget extends ConsumerWidget {
+  const _PreferencesButtonWidget();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: GestureDetector(
+        onTap: () {
+          ref.read(preferencesNotifierProvider.notifier).getAllPreferences();
+          context.goNamed(AppRouter.preferencesRouteData.name);
+        },
+        child: Row(
+          children: [
+            const Icon(Icons.manage_accounts_outlined, color: UiColors.intenseGrey),
+            Text(
+              'Preferences',
+              style: UiTextStyle.personNameRow.copyWith(decoration: TextDecoration.underline),
+            ),
+          ],
+        ),
       ),
     );
   }

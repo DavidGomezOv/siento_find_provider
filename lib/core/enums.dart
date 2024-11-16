@@ -23,13 +23,3 @@ enum PreferenceType {
 
   const PreferenceType(this.intValue, this.displayValue);
 }
-
-enum LocationPreference {
-  phoneLocation('Use my phone’s current location'),
-  zipCode('Use a zip code'),
-  searchWholeState('Search my whole state');
-
-  final String displayValue;
-
-  const LocationPreference(this.displayValue);
-}

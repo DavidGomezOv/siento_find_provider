@@ -9,31 +9,24 @@ part of 'preference_setting_model.dart';
 _$LocationPreferenceImpl _$$LocationPreferenceImplFromJson(
         Map<String, dynamic> json) =>
     _$LocationPreferenceImpl(
-      locationPreference: $enumDecodeNullable(
-          _$LocationPreferenceEnumMap, json['locationPreference']),
+      locationPreference: json['locationPreference'] as String? ?? '',
       $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$LocationPreferenceImplToJson(
         _$LocationPreferenceImpl instance) =>
     <String, dynamic>{
-      'locationPreference':
-          _$LocationPreferenceEnumMap[instance.locationPreference],
+      'locationPreference': instance.locationPreference,
       'runtimeType': instance.$type,
     };
-
-const _$LocationPreferenceEnumMap = {
-  LocationPreference.phoneLocation: 'phoneLocation',
-  LocationPreference.zipCode: 'zipCode',
-  LocationPreference.searchWholeState: 'searchWholeState',
-};
 
 _$InsurancePreferencesImpl _$$InsurancePreferencesImplFromJson(
         Map<String, dynamic> json) =>
     _$InsurancePreferencesImpl(
       insurances: (json['insurances'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
       $type: json['runtimeType'] as String?,
     );
 
@@ -41,6 +34,80 @@ Map<String, dynamic> _$$InsurancePreferencesImplToJson(
         _$InsurancePreferencesImpl instance) =>
     <String, dynamic>{
       'insurances': instance.insurances,
+      'runtimeType': instance.$type,
+    };
+
+_$TopicsOfInterestPreferenceImpl _$$TopicsOfInterestPreferenceImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TopicsOfInterestPreferenceImpl(
+      topicsOfInterest: (json['topicsOfInterest'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$TopicsOfInterestPreferenceImplToJson(
+        _$TopicsOfInterestPreferenceImpl instance) =>
+    <String, dynamic>{
+      'topicsOfInterest': instance.topicsOfInterest,
+      'runtimeType': instance.$type,
+    };
+
+_$ServiceTypePreferenceImpl _$$ServiceTypePreferenceImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ServiceTypePreferenceImpl(
+      routeOfService: json['routeOfService'] as String? ?? '',
+      typeOfService: json['typeOfService'] as String? ?? '',
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$ServiceTypePreferenceImplToJson(
+        _$ServiceTypePreferenceImpl instance) =>
+    <String, dynamic>{
+      'routeOfService': instance.routeOfService,
+      'typeOfService': instance.typeOfService,
+      'runtimeType': instance.$type,
+    };
+
+_$CultureAndFaithPreferenceImpl _$$CultureAndFaithPreferenceImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CultureAndFaithPreferenceImpl(
+      cultures: (json['cultures'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      faiths: (json['faiths'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$CultureAndFaithPreferenceImplToJson(
+        _$CultureAndFaithPreferenceImpl instance) =>
+    <String, dynamic>{
+      'cultures': instance.cultures,
+      'faiths': instance.faiths,
+      'runtimeType': instance.$type,
+    };
+
+_$GenderAndSexualityPreferenceImpl _$$GenderAndSexualityPreferenceImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GenderAndSexualityPreferenceImpl(
+      genders: (json['genders'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      providerIdentifiesAs: json['providerIdentifiesAs'] as String? ?? '',
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$GenderAndSexualityPreferenceImplToJson(
+        _$GenderAndSexualityPreferenceImpl instance) =>
+    <String, dynamic>{
+      'genders': instance.genders,
+      'providerIdentifiesAs': instance.providerIdentifiesAs,
       'runtimeType': instance.$type,
     };
 

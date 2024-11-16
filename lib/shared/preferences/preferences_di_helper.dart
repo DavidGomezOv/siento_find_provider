@@ -24,8 +24,7 @@ final updatePreferencesUseCaseProvider = Provider<UpdatePreferenceUseCase>(
   },
 );
 
-final preferencesNotifierProvider =
-    AutoDisposeStateNotifierProvider<PreferencesNotifier, PreferencesState>(
+final preferencesNotifierProvider = StateNotifierProvider<PreferencesNotifier, PreferencesState>(
   (ref) {
     final getAllPreferencesUseCase = ref.watch(getAllPreferencesUseCaseProvider);
     final updatePreferencesUseCase = ref.watch(updatePreferencesUseCaseProvider);

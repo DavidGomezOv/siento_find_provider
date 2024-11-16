@@ -15,7 +15,7 @@ class FindProviderNotifier extends StateNotifier<FindProviderState> {
     required this.getProvidersUseCase,
   }) : super(const FindProviderState.loading());
 
-  Future<void> getProvidersList() async {
+  void getProvidersList() async {
     state = const FindProviderState.loading();
 
     final response = await getProvidersUseCase.call();
@@ -29,7 +29,7 @@ class FindProviderNotifier extends StateNotifier<FindProviderState> {
     );
   }
 
-  Future<void> filterListByTypes({required ProviderType filterType}) async {
+  void filterListByTypes({required ProviderType filterType}) async {
     state = FindProviderState.loaded(
       providers: state.maybeWhen(
         loaded: (providers, _, __) => providers,

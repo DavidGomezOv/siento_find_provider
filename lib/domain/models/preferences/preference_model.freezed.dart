@@ -284,18 +284,24 @@ class __$$PreferenceModelImplCopyWithImpl<$Res>
 class _$PreferenceModelImpl implements _PreferenceModel {
   _$PreferenceModelImpl(
       {required this.userId,
-      this.locationPreferenceModel =
-          const PreferenceItemModel(preferenceIntType: 1),
-      this.insurancePreferenceModel =
-          const PreferenceItemModel(preferenceIntType: 2),
-      this.topicsOfInterestPreferenceModel =
-          const PreferenceItemModel(preferenceIntType: 3),
-      this.serviceTypePreferenceModel =
-          const PreferenceItemModel(preferenceIntType: 4),
-      this.cultureAndFaithPreferenceModel =
-          const PreferenceItemModel(preferenceIntType: 5),
-      this.genderAndSexualityPreferenceModel =
-          const PreferenceItemModel(preferenceIntType: 6)});
+      this.locationPreferenceModel = const PreferenceItemModel(
+          preferenceIntType: 1,
+          mappedSettings: PreferenceSettingModel.location()),
+      this.insurancePreferenceModel = const PreferenceItemModel(
+          preferenceIntType: 2,
+          mappedSettings: PreferenceSettingModel.insurance()),
+      this.topicsOfInterestPreferenceModel = const PreferenceItemModel(
+          preferenceIntType: 3,
+          mappedSettings: PreferenceSettingModel.topicsOfInterest()),
+      this.serviceTypePreferenceModel = const PreferenceItemModel(
+          preferenceIntType: 4,
+          mappedSettings: PreferenceSettingModel.serviceType()),
+      this.cultureAndFaithPreferenceModel = const PreferenceItemModel(
+          preferenceIntType: 5,
+          mappedSettings: PreferenceSettingModel.cultureAndFaith()),
+      this.genderAndSexualityPreferenceModel = const PreferenceItemModel(
+          preferenceIntType: 6,
+          mappedSettings: PreferenceSettingModel.genderAndSexuality())});
 
   factory _$PreferenceModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PreferenceModelImplFromJson(json);

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:siento_find_provider/presentation/widgets/back_button_widget.dart';
 import 'package:siento_find_provider/theme/ui_colors.dart';
 import 'package:siento_find_provider/domain/models/provider/provider_model.dart';
 import 'package:siento_find_provider/presentation/provider_detail/widgets/provider_detail_additional_information_widget.dart';
 import 'package:siento_find_provider/presentation/provider_detail/widgets/provider_detail_contact_buttons_widget.dart';
 import 'package:siento_find_provider/presentation/provider_detail/widgets/provider_detail_header_widget.dart';
 import 'package:siento_find_provider/presentation/provider_detail/widgets/provider_detail_specific_information_widget.dart';
-import 'package:siento_find_provider/routes/app_router.dart';
 import 'package:siento_find_provider/theme/ui_text_style.dart';
 
 class ProviderDetailPage extends StatelessWidget {
@@ -24,18 +23,7 @@ class ProviderDetailPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: GestureDetector(
-                  onTap: () => context.goNamed(AppRouter.providerListRouteData.name),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.arrow_back_rounded, color: UiColors.intenseGrey),
-                      Text('Back', style: UiTextStyle.personNameRow)
-                    ],
-                  ),
-                ),
-              ),
+              const BackButtonWidget(),
               const SizedBox(height: 10),
               ProviderDetailHeaderWidget(
                 imageUrl: selectedProvider.imageUrl,

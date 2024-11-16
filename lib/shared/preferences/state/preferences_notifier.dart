@@ -16,7 +16,7 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
     required this.updatePreferenceUseCase,
   }) : super(const PreferencesState.loading());
 
-  Future<void> getAllPreferences() async {
+  void getAllPreferences() async {
     state = const PreferencesState.loading();
 
     final response = await getAllPreferencesUseCase.call(userId: '2');
@@ -27,7 +27,7 @@ class PreferencesNotifier extends StateNotifier<PreferencesState> {
     );
   }
 
-  Future<void> savePreferences({required PreferenceModel updatedPreferencesModel}) async {
+  void savePreferences({required PreferenceModel updatedPreferencesModel}) async {
     state = const PreferencesState.loading();
 
     final response = await updatePreferenceUseCase.call(preferenceModel: updatedPreferencesModel);

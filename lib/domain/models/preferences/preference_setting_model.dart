@@ -11,12 +11,31 @@ class PreferenceSettingModel with _$PreferenceSettingModel {
   const PreferenceSettingModel._();
 
   const factory PreferenceSettingModel.location({
-    LocationPreference? locationPreference,
+    @Default('') String locationPreference,
   }) = _LocationPreference;
 
   const factory PreferenceSettingModel.insurance({
-    List<String>? insurances,
+    @Default([]) List<String> insurances,
   }) = _InsurancePreferences;
+
+  const factory PreferenceSettingModel.topicsOfInterest({
+    @Default([]) List<String> topicsOfInterest,
+  }) = _TopicsOfInterestPreference;
+
+  const factory PreferenceSettingModel.serviceType({
+    @Default('') String routeOfService,
+    @Default('') String typeOfService,
+  }) = _ServiceTypePreference;
+
+  const factory PreferenceSettingModel.cultureAndFaith({
+    @Default([]) List<String> cultures,
+    @Default([]) List<String> faiths,
+  }) = _CultureAndFaithPreference;
+
+  const factory PreferenceSettingModel.genderAndSexuality({
+    @Default([]) List<String> genders,
+    @Default('') String providerIdentifiesAs,
+  }) = _GenderAndSexualityPreference;
 
   const factory PreferenceSettingModel.empty() = _Empty;
 

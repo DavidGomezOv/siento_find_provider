@@ -50,7 +50,7 @@ class _ProvidersListState extends ConsumerState<ProvidersListWidget> {
           ),
         );
       },
-      failedToLoad: (errorMessage) => Text(errorMessage),
+      failedToLoad: (errorMessage) => Center(child: Text(errorMessage)),
     );
   }
 }
