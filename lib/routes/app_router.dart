@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_item_model.dart';
 import 'package:siento_find_provider/domain/models/provider/provider_model.dart';
 import 'package:siento_find_provider/presentation/preference_detail/preference_detail_page.dart';
 import 'package:siento_find_provider/presentation/preferences/preferences_page.dart';
@@ -51,10 +50,11 @@ GoRouter goRouter(Ref ref) {
                   path: AppRouter.preferenceDetailRouteData.path,
                   name: AppRouter.preferenceDetailRouteData.name,
                   builder: (context, state) {
-                    final PreferenceItemModel preferenceModel = state.extra as PreferenceItemModel;
+                    final parameters = state.extra as Map<String, dynamic>;
                     return PreferenceDetailPage(
                       key: state.pageKey,
-                      preferenceItemModel: preferenceModel,
+                      preferenceItemModel: parameters['preferenceItemModel'],
+                      preferenceModel: parameters['preferenceModel'],
                     );
                   },
                 ),

@@ -13,7 +13,7 @@ class PreferencesDatasource with DatasourceErrorHandler {
             await collectionRef.where('userId', isEqualTo: userId).limit(1).get();
         final data = document.docs.first.data();
 
-        return PreferenceModel.fromJson(data as Map<String, dynamic>);
+        return PreferenceModel.fromFirebaseJson(data as Map<String, dynamic>);
       },
     );
   }
@@ -29,12 +29,12 @@ class PreferencesDatasource with DatasourceErrorHandler {
         String docId = document.docs.first.id;
 
         if (docId.isNotEmpty) {
-          return await collectionRef.doc(docId).update(preferenceModel.toJson()).then(
+          return await collectionRef.doc(docId).update(preferenceModel.toFirebaseJson()).then(
                 (value) => true,
                 onError: (error) => throw (Exception(error)),
               );
         } else {
-          return await collectionRef.add(preferenceModel.toJson()).then(
+          return await collectionRef.add(preferenceModel.toFirebaseJson()).then(
                 (value) => true,
                 onError: (error) => throw (Exception(error)),
               );

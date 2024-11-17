@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:siento_find_provider/domain/models/preferences/preference_item_model.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/culture_faith_preference_widget.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/gender_sexuality_preference_widget.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/insurance_preference_widget.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/location_preference_widget.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/service_type_preference_widget.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/topics_of_interest_preference_widget.dart';
+import 'package:siento_find_provider/domain/models/preferences/preference_model.dart';
+import 'package:siento_find_provider/presentation/preference_detail/widgets/pages/preferences_detail_pages.dart';
 import 'package:siento_find_provider/presentation/widgets/back_button_widget.dart';
+import 'package:siento_find_provider/shared/preferences/preferences_di_helper.dart';
 import 'package:siento_find_provider/theme/ui_colors.dart';
 
-class PreferenceDetailPage extends StatelessWidget {
+class PreferenceDetailPage extends ConsumerWidget {
   const PreferenceDetailPage({
     super.key,
     required this.preferenceItemModel,
+    required this.preferenceModel,
   });
 
   final PreferenceItemModel preferenceItemModel;
+  final PreferenceModel preferenceModel;
+
+  void savePreferences(WidgetRef ref, PreferenceModel model) {
+    ref.read(preferencesNotifierProvider.notifier).savePreferences(
+          updatedPreferencesModel: model,
+        );
+  }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: UiColors.onboardingBlue,
       body: Container(
@@ -30,19 +36,28 @@ class PreferenceDetailPage extends StatelessWidget {
               const BackButtonWidget(),
               preferenceItemModel.mappedSettings.when(
                 location: (locationPreference) => LocationPreferenceWidget(
-                  onSavePreference: (PreferenceItemModel model) {
-                    //TODO ADD SAVE PREFERENCE
-                  },
-                  selectedValue: locationPreference,
+                  onSavePreference: (PreferenceItemModel model) => savePreferences(
+                    ref,
+                    preferenceModel.copyWith(locationPreferenceModel: model),
+                  ),
                 ),
                 insurance: (insurances) => InsurancePreferenceWidget(
-                  onSavePreference: (PreferenceItemModel model) {},
+                  onSavePreference: (PreferenceItemModel model) => savePreferences(
+                    ref,
+                    preferenceModel.copyWith(insurancePreferenceModel: model),
+                  ),
                 ),
                 topicsOfInterest: (topicsOfInterest) => TopicsOfInterestPreferenceWidget(
-                  onSavePreference: (PreferenceItemModel model) {},
+                  onSavePreference: (PreferenceItemModel model) => savePreferences(
+                    ref,
+                    preferenceModel.copyWith(topicsOfInterestPreferenceModel: model),
+                  ),
                 ),
                 serviceType: (routeOfService, typeOfService) => ServiceTypePreferenceWidget(
-                  onSavePreference: (PreferenceItemModel model) {},
+                  onSavePreference: (PreferenceItemModel model) => savePreferences(
+                    ref,
+                    preferenceModel.copyWith(serviceTypePreferenceModel: model),
+                  ),
                 ),
                 cultureAndFaith: (cultures, faiths) => CultureFaithPreferenceWidget(
                   onSavePreference: (PreferenceItemModel model) {},

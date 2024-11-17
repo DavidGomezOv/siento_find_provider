@@ -12,12 +12,12 @@ class CustomRadioButton extends StatelessWidget {
 
   final String label;
   final bool selected;
-  final Function(bool? value) onChanged;
+  final Function(String value) onChanged;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onChanged(selected),
+      onTap: () => onChanged(label),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -26,7 +26,7 @@ class CustomRadioButton extends StatelessWidget {
             child: Checkbox(
               side: const BorderSide(color: UiColors.lightGray, width: 1),
               value: selected,
-              onChanged: onChanged,
+              onChanged: (_) => onChanged(label),
               shape: const CircleBorder(),
               checkColor: selected ? UiColors.requestButton : UiColors.white,
               fillColor: WidgetStatePropertyAll(selected ? UiColors.requestButton : UiColors.white),

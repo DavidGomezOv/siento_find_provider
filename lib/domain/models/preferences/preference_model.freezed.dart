@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-PreferenceModel _$PreferenceModelFromJson(Map<String, dynamic> json) {
-  return _PreferenceModel.fromJson(json);
-}
-
 /// @nodoc
 mixin _$PreferenceModel {
   String get userId => throw _privateConstructorUsedError;
@@ -33,9 +29,6 @@ mixin _$PreferenceModel {
       throw _privateConstructorUsedError;
   PreferenceItemModel get genderAndSexualityPreferenceModel =>
       throw _privateConstructorUsedError;
-
-  /// Serializes this PreferenceModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of PreferenceModel
   /// with the given fields replaced by the non-null parameter values.
@@ -280,8 +273,8 @@ class __$$PreferenceModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$PreferenceModelImpl implements _PreferenceModel {
+
+class _$PreferenceModelImpl extends _PreferenceModel {
   _$PreferenceModelImpl(
       {required this.userId,
       this.locationPreferenceModel = const PreferenceItemModel(
@@ -301,10 +294,8 @@ class _$PreferenceModelImpl implements _PreferenceModel {
           mappedSettings: PreferenceSettingModel.cultureAndFaith()),
       this.genderAndSexualityPreferenceModel = const PreferenceItemModel(
           preferenceIntType: 6,
-          mappedSettings: PreferenceSettingModel.genderAndSexuality())});
-
-  factory _$PreferenceModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PreferenceModelImplFromJson(json);
+          mappedSettings: PreferenceSettingModel.genderAndSexuality())})
+      : super._();
 
   @override
   final String userId;
@@ -362,7 +353,6 @@ class _$PreferenceModelImpl implements _PreferenceModel {
                     genderAndSexualityPreferenceModel));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -382,16 +372,9 @@ class _$PreferenceModelImpl implements _PreferenceModel {
   _$$PreferenceModelImplCopyWith<_$PreferenceModelImpl> get copyWith =>
       __$$PreferenceModelImplCopyWithImpl<_$PreferenceModelImpl>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PreferenceModelImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _PreferenceModel implements PreferenceModel {
+abstract class _PreferenceModel extends PreferenceModel {
   factory _PreferenceModel(
           {required final String userId,
           final PreferenceItemModel locationPreferenceModel,
@@ -401,9 +384,7 @@ abstract class _PreferenceModel implements PreferenceModel {
           final PreferenceItemModel cultureAndFaithPreferenceModel,
           final PreferenceItemModel genderAndSexualityPreferenceModel}) =
       _$PreferenceModelImpl;
-
-  factory _PreferenceModel.fromJson(Map<String, dynamic> json) =
-      _$PreferenceModelImpl.fromJson;
+  _PreferenceModel._() : super._();
 
   @override
   String get userId;

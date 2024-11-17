@@ -54,3 +54,19 @@ class PreferenceSettingModel with _$PreferenceSettingModel {
     return PreferenceSettingModel.fromJson(json);
   }
 }
+
+class PreferenceSettingsModelConverter
+    implements JsonConverter<PreferenceSettingModel, Map<String, dynamic>> {
+  const PreferenceSettingsModelConverter();
+
+  @override
+  PreferenceSettingModel fromJson(Map<String, dynamic> json) =>
+      PreferenceSettingModel.fromJson(json);
+
+  @override
+  Map<String, dynamic> toJson(PreferenceSettingModel object) {
+    final json = object.toJson();
+    json.remove('runtimeType');
+    return json;
+  }
+}

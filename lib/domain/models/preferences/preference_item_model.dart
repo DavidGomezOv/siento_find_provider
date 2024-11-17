@@ -25,6 +25,6 @@ class PreferenceItemModel with _$PreferenceItemModel {
 
   Map<String, dynamic> toJson() => {
         'preferenceIntType': preferenceIntType,
-        'settings': mappedSettings.toJson()..remove('runtimeType'),
+        'settings': const PreferenceSettingsModelConverter().toJson(mappedSettings),
       };
 }

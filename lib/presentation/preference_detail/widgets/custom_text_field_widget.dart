@@ -7,16 +7,20 @@ class CustomTextFieldWidget extends StatelessWidget {
   const CustomTextFieldWidget({
     super.key,
     required this.hintText,
-    required this.onChanged,
+    required this.onSubmitted,
+    this.controller,
   });
 
   final String hintText;
-  final Function(String value) onChanged;
+  final Function(String value) onSubmitted;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: onChanged,
+      controller: controller,
+      textInputAction: TextInputAction.done,
+      onSubmitted: onSubmitted,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
         filled: true,
