@@ -60,7 +60,10 @@ class PreferenceDetailPage extends ConsumerWidget {
                   ),
                 ),
                 cultureAndFaith: (cultures, faiths) => CultureFaithPreferenceWidget(
-                  onSavePreference: (PreferenceItemModel model) {},
+                  onSavePreference: (PreferenceItemModel model) => savePreferences(
+                    ref,
+                    preferenceModel.copyWith(cultureAndFaithPreferenceModel: model),
+                  ),
                 ),
                 genderAndSexuality: (genders, providerIdentifiesAs) =>
                     GenderSexualityPreferenceWidget(

@@ -29,7 +29,7 @@ const culturesList = [
   'Native American',
 ];
 
-const religionsList = [
+const faithsList = [
   'Muslim',
   'Christian',
   'Buddhist',

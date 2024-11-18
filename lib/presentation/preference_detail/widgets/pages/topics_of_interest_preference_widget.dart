@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siento_find_provider/core/const_values.dart';
 import 'package:siento_find_provider/domain/models/preferences/preference_item_model.dart';
 import 'package:siento_find_provider/domain/models/preferences/preference_setting_model.dart';
 import 'package:siento_find_provider/presentation/preference_detail/widgets/custom_text_field_widget.dart';
 import 'package:siento_find_provider/presentation/preference_detail/widgets/selectable_button_widget.dart';
+import 'package:siento_find_provider/presentation/preference_detail/widgets/written_items_list_widget.dart';
 import 'package:siento_find_provider/presentation/widgets/custom_error_widget.dart';
 import 'package:siento_find_provider/presentation/widgets/snackbar_widget.dart';
 import 'package:siento_find_provider/shared/preferences/preferences_di_helper.dart';
-import 'package:siento_find_provider/theme/ui_colors.dart';
 import 'package:siento_find_provider/theme/ui_text_style.dart';
 
 class TopicsOfInterestPreferenceWidget extends StatefulWidget {
@@ -130,9 +129,9 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
                         'Written in topics of interest:',
                         style: UiTextStyle.primaryTextStyle,
                       ),
-                      _WrittenTopicsList(
-                        writtenTopics: writtenTopics,
-                        onDeleteItem: (item) {
+                      WrittenItemsListWidget(
+                        writtenItems: writtenTopics,
+                        onDelete: (item) {
                           final insurancesPreference =
                               preferences.topicsOfInterestPreferenceModel.copyWith(
                             mappedSettings: PreferenceSettingModel.topicsOfInterest(
@@ -141,7 +140,7 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
                           );
                           widget.onSavePreference(insurancesPreference);
                         },
-                        onUpdateItem: (item) {},
+                        onUpdate: (item) {},
                       ),
                     ],
                   );
@@ -180,52 +179,6 @@ class _DefaultOptionsList extends StatelessWidget {
             ),
           )
           .toList(),
-    );
-  }
-}
-
-class _WrittenTopicsList extends StatelessWidget {
-  const _WrittenTopicsList({
-    required this.writtenTopics,
-    required this.onDeleteItem,
-    required this.onUpdateItem,
-  });
-
-  final List<String> writtenTopics;
-  final Function(String item) onDeleteItem;
-  final Function(String item) onUpdateItem;
-
-  @override
-  Widget build(BuildContext context) {
-    return Flexible(
-      child: ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        shrinkWrap: true,
-        itemCount: writtenTopics.length,
-        itemBuilder: (context, index) {
-          final currentTopic = writtenTopics[index];
-          return Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Expanded(
-                child: Text(
-                  '"$currentTopic"',
-                  style: UiTextStyle.primaryTextStyle.copyWith(fontSize: 15.sp),
-                ),
-              ),
-              IconButton(
-                onPressed: () => onUpdateItem(currentTopic),
-                icon: const Icon(Icons.edit_outlined, color: UiColors.intenseGrey, size: 28),
-              ),
-              IconButton(
-                onPressed: () => onDeleteItem(currentTopic),
-                icon: const Icon(Icons.close_outlined, color: UiColors.intenseGrey, size: 28),
-              ),
-            ],
-          );
-        },
-      ),
     );
   }
 }
