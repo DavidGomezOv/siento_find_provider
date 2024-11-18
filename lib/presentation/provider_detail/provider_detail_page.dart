@@ -18,31 +18,40 @@ class ProviderDetailPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: UiColors.onboardingBlue,
       body: Padding(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.symmetric(vertical: 14),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const BackButtonWidget(),
               const SizedBox(height: 10),
-              ProviderDetailHeaderWidget(
-                imageUrl: selectedProvider.imageUrl,
-                name: selectedProvider.name,
-                specialty: selectedProvider.specialty,
+              Padding(
+                padding: const EdgeInsets.all(14),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ProviderDetailHeaderWidget(
+                      imageUrl: selectedProvider.imageUrl,
+                      name: selectedProvider.name,
+                      specialty: selectedProvider.specialty,
+                    ),
+                    const SizedBox(height: 18),
+                    ProviderDetailIndicatorsWidget(selectedProvider: selectedProvider),
+                    const SizedBox(height: 15),
+                    Text(
+                      selectedProvider.description,
+                      style: UiTextStyle.tabsTextStyle,
+                    ),
+                    const SizedBox(height: 18),
+                    ProviderDetailContactButtonsWidget(
+                      phone: selectedProvider.phone,
+                      email: selectedProvider.email,
+                    ),
+                    ProviderDetailAdditionalInformationWidget(selectedProvider: selectedProvider)
+                  ],
+                ),
               ),
-              const SizedBox(height: 18),
-              ProviderDetailIndicatorsWidget(selectedProvider: selectedProvider),
-              const SizedBox(height: 15),
-              Text(
-                selectedProvider.description,
-                style: UiTextStyle.tabsTextStyle,
-              ),
-              const SizedBox(height: 18),
-              ProviderDetailContactButtonsWidget(
-                phone: selectedProvider.phone,
-                email: selectedProvider.email,
-              ),
-              ProviderDetailAdditionalInformationWidget(selectedProvider: selectedProvider)
+
             ],
           ),
         ),

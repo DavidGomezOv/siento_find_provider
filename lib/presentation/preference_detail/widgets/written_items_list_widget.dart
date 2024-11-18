@@ -35,11 +35,11 @@ class WrittenItemsListWidget extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () => onDelete(currentItem),
+                onPressed: () => onUpdate(currentItem),
                 icon: const Icon(Icons.edit_outlined, color: UiColors.intenseGrey, size: 28),
               ),
               IconButton(
-                onPressed: () => onUpdate(currentItem),
+                onPressed: () => onDelete(currentItem),
                 icon: const Icon(Icons.close_outlined, color: UiColors.intenseGrey, size: 28),
               ),
             ],

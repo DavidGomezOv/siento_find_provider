@@ -8,7 +8,7 @@ showCommonSnackBar(BuildContext context, String message) => ScaffoldMessenger.of
     SnackBar(
       elevation: 0,
       behavior: SnackBarBehavior.floating,
-      backgroundColor: Colors.black45,
+      backgroundColor: Colors.black87,
       content: Text(
         message,
         style: UiTextStyle.personNameRow.copyWith(color: UiColors.white),

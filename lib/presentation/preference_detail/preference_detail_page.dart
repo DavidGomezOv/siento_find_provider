@@ -67,7 +67,10 @@ class PreferenceDetailPage extends ConsumerWidget {
                 ),
                 genderAndSexuality: (genders, providerIdentifiesAs) =>
                     GenderSexualityPreferenceWidget(
-                  onSavePreference: (PreferenceItemModel model) {},
+                  onSavePreference: (PreferenceItemModel model) => savePreferences(
+                    ref,
+                    preferenceModel.copyWith(genderAndSexualityPreferenceModel: model),
+                  ),
                 ),
                 empty: () => const Center(
                   child: Text('No Preference available'),

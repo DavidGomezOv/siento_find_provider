@@ -26,6 +26,13 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
   final TextEditingController controllerFaith = TextEditingController();
 
   @override
+  void dispose() {
+    controllerCultural.dispose();
+    controllerFaith.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
