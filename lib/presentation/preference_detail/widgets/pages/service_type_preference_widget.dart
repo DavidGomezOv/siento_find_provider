@@ -45,15 +45,8 @@ class ServiceTypePreferenceWidget extends StatelessWidget {
               return preferencesProvider.when(
                 loading: () => const Center(child: CircularProgressIndicator()),
                 loaded: (preferences) {
-                  String selectedRouteOfService = '';
-                  String selectedTypeOfService = '';
-                  preferences.serviceTypePreferenceModel.mappedSettings.maybeWhen(
-                    serviceType: (routeOfService, typeOfService) {
-                      selectedRouteOfService = routeOfService;
-                      selectedTypeOfService = typeOfService;
-                    },
-                    orElse: () {},
-                  );
+                  final String selectedRouteOfService = preferences.getServiceType().$1;
+                  final String selectedTypeOfService = preferences.getServiceType().$2;
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [

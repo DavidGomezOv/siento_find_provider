@@ -61,11 +61,7 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
               return preferencesProvider.when(
                 loading: () => const Center(child: CircularProgressIndicator()),
                 loaded: (preferences) {
-                  final List<String> currentPreferenceValue =
-                      preferences.topicsOfInterestPreferenceModel.mappedSettings.maybeWhen(
-                    topicsOfInterest: (topicsOfInterest) => topicsOfInterest,
-                    orElse: () => [],
-                  );
+                  final List<String> currentPreferenceValue = preferences.getTopicsOfInterest();
                   List<String> defaultSelectedTopics = [];
                   List<String> writtenTopics = [];
                   for (final element in currentPreferenceValue) {

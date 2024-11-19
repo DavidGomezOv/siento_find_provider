@@ -47,11 +47,7 @@ class LocationPreferenceWidget extends StatelessWidget {
               return preferencesProvider.when(
                 loading: () => const Center(child: CircularProgressIndicator()),
                 loaded: (preferences) {
-                  final currentPreferenceValue =
-                      preferences.locationPreferenceModel.mappedSettings.maybeWhen(
-                    location: (locationPreference) => locationPreference,
-                    orElse: () {},
-                  );
+                  final currentPreferenceValue = preferences.getLocation();
                   return Column(
                     children: locationOptions
                         .map(

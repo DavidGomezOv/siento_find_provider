@@ -30,13 +30,13 @@ mixin _$ProviderModel {
   bool get inYourInsuranceNetwork => throw _privateConstructorUsedError;
   bool get coveredByYourEpa => throw _privateConstructorUsedError;
   bool get vettedByYourDepartment => throw _privateConstructorUsedError;
-  List<String> get preferences => throw _privateConstructorUsedError;
   String get specialtyAndExpertise => throw _privateConstructorUsedError;
   ProviderClientFocusModel get clientFocus =>
       throw _privateConstructorUsedError;
   List<String> get treatmentApproaches => throw _privateConstructorUsedError;
   String get qualifications => throw _privateConstructorUsedError;
   Timestamp? get lastUpdated => throw _privateConstructorUsedError;
+  PreferenceModel? get preferences => throw _privateConstructorUsedError;
 
   /// Create a copy of ProviderModel
   /// with the given fields replaced by the non-null parameter values.
@@ -66,14 +66,15 @@ abstract class $ProviderModelCopyWith<$Res> {
       bool inYourInsuranceNetwork,
       bool coveredByYourEpa,
       bool vettedByYourDepartment,
-      List<String> preferences,
       String specialtyAndExpertise,
       ProviderClientFocusModel clientFocus,
       List<String> treatmentApproaches,
       String qualifications,
-      Timestamp? lastUpdated});
+      Timestamp? lastUpdated,
+      PreferenceModel? preferences});
 
   $ProviderClientFocusModelCopyWith<$Res> get clientFocus;
+  $PreferenceModelCopyWith<$Res>? get preferences;
 }
 
 /// @nodoc
@@ -105,12 +106,12 @@ class _$ProviderModelCopyWithImpl<$Res, $Val extends ProviderModel>
     Object? inYourInsuranceNetwork = null,
     Object? coveredByYourEpa = null,
     Object? vettedByYourDepartment = null,
-    Object? preferences = null,
     Object? specialtyAndExpertise = null,
     Object? clientFocus = null,
     Object? treatmentApproaches = null,
     Object? qualifications = null,
     Object? lastUpdated = freezed,
+    Object? preferences = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -169,10 +170,6 @@ class _$ProviderModelCopyWithImpl<$Res, $Val extends ProviderModel>
           ? _value.vettedByYourDepartment
           : vettedByYourDepartment // ignore: cast_nullable_to_non_nullable
               as bool,
-      preferences: null == preferences
-          ? _value.preferences
-          : preferences // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       specialtyAndExpertise: null == specialtyAndExpertise
           ? _value.specialtyAndExpertise
           : specialtyAndExpertise // ignore: cast_nullable_to_non_nullable
@@ -193,6 +190,10 @@ class _$ProviderModelCopyWithImpl<$Res, $Val extends ProviderModel>
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as Timestamp?,
+      preferences: freezed == preferences
+          ? _value.preferences
+          : preferences // ignore: cast_nullable_to_non_nullable
+              as PreferenceModel?,
     ) as $Val);
   }
 
@@ -203,6 +204,20 @@ class _$ProviderModelCopyWithImpl<$Res, $Val extends ProviderModel>
   $ProviderClientFocusModelCopyWith<$Res> get clientFocus {
     return $ProviderClientFocusModelCopyWith<$Res>(_value.clientFocus, (value) {
       return _then(_value.copyWith(clientFocus: value) as $Val);
+    });
+  }
+
+  /// Create a copy of ProviderModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PreferenceModelCopyWith<$Res>? get preferences {
+    if (_value.preferences == null) {
+      return null;
+    }
+
+    return $PreferenceModelCopyWith<$Res>(_value.preferences!, (value) {
+      return _then(_value.copyWith(preferences: value) as $Val);
     });
   }
 }
@@ -230,15 +245,17 @@ abstract class _$$ProviderModelImplCopyWith<$Res>
       bool inYourInsuranceNetwork,
       bool coveredByYourEpa,
       bool vettedByYourDepartment,
-      List<String> preferences,
       String specialtyAndExpertise,
       ProviderClientFocusModel clientFocus,
       List<String> treatmentApproaches,
       String qualifications,
-      Timestamp? lastUpdated});
+      Timestamp? lastUpdated,
+      PreferenceModel? preferences});
 
   @override
   $ProviderClientFocusModelCopyWith<$Res> get clientFocus;
+  @override
+  $PreferenceModelCopyWith<$Res>? get preferences;
 }
 
 /// @nodoc
@@ -268,12 +285,12 @@ class __$$ProviderModelImplCopyWithImpl<$Res>
     Object? inYourInsuranceNetwork = null,
     Object? coveredByYourEpa = null,
     Object? vettedByYourDepartment = null,
-    Object? preferences = null,
     Object? specialtyAndExpertise = null,
     Object? clientFocus = null,
     Object? treatmentApproaches = null,
     Object? qualifications = null,
     Object? lastUpdated = freezed,
+    Object? preferences = freezed,
   }) {
     return _then(_$ProviderModelImpl(
       id: null == id
@@ -332,10 +349,6 @@ class __$$ProviderModelImplCopyWithImpl<$Res>
           ? _value.vettedByYourDepartment
           : vettedByYourDepartment // ignore: cast_nullable_to_non_nullable
               as bool,
-      preferences: null == preferences
-          ? _value._preferences
-          : preferences // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       specialtyAndExpertise: null == specialtyAndExpertise
           ? _value.specialtyAndExpertise
           : specialtyAndExpertise // ignore: cast_nullable_to_non_nullable
@@ -356,6 +369,10 @@ class __$$ProviderModelImplCopyWithImpl<$Res>
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as Timestamp?,
+      preferences: freezed == preferences
+          ? _value.preferences
+          : preferences // ignore: cast_nullable_to_non_nullable
+              as PreferenceModel?,
     ));
   }
 }
@@ -378,14 +395,13 @@ class _$ProviderModelImpl extends _ProviderModel {
       this.inYourInsuranceNetwork = false,
       this.coveredByYourEpa = false,
       this.vettedByYourDepartment = false,
-      final List<String> preferences = const [],
       this.specialtyAndExpertise = '',
       this.clientFocus = const ProviderClientFocusModel(),
       final List<String> treatmentApproaches = const [],
       this.qualifications = '',
-      this.lastUpdated})
+      this.lastUpdated,
+      this.preferences})
       : _connectionMethod = connectionMethod,
-        _preferences = preferences,
         _treatmentApproaches = treatmentApproaches,
         super._();
 
@@ -438,15 +454,6 @@ class _$ProviderModelImpl extends _ProviderModel {
   @override
   @JsonKey()
   final bool vettedByYourDepartment;
-  final List<String> _preferences;
-  @override
-  @JsonKey()
-  List<String> get preferences {
-    if (_preferences is EqualUnmodifiableListView) return _preferences;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_preferences);
-  }
-
   @override
   @JsonKey()
   final String specialtyAndExpertise;
@@ -468,10 +475,12 @@ class _$ProviderModelImpl extends _ProviderModel {
   final String qualifications;
   @override
   final Timestamp? lastUpdated;
+  @override
+  final PreferenceModel? preferences;
 
   @override
   String toString() {
-    return 'ProviderModel(id: $id, name: $name, imageUrl: $imageUrl, specialty: $specialty, description: $description, endorsedTimes: $endorsedTimes, milesAway: $milesAway, phone: $phone, email: $email, providerType: $providerType, connectionMethod: $connectionMethod, inYourInsuranceNetwork: $inYourInsuranceNetwork, coveredByYourEpa: $coveredByYourEpa, vettedByYourDepartment: $vettedByYourDepartment, preferences: $preferences, specialtyAndExpertise: $specialtyAndExpertise, clientFocus: $clientFocus, treatmentApproaches: $treatmentApproaches, qualifications: $qualifications, lastUpdated: $lastUpdated)';
+    return 'ProviderModel(id: $id, name: $name, imageUrl: $imageUrl, specialty: $specialty, description: $description, endorsedTimes: $endorsedTimes, milesAway: $milesAway, phone: $phone, email: $email, providerType: $providerType, connectionMethod: $connectionMethod, inYourInsuranceNetwork: $inYourInsuranceNetwork, coveredByYourEpa: $coveredByYourEpa, vettedByYourDepartment: $vettedByYourDepartment, specialtyAndExpertise: $specialtyAndExpertise, clientFocus: $clientFocus, treatmentApproaches: $treatmentApproaches, qualifications: $qualifications, lastUpdated: $lastUpdated, preferences: $preferences)';
   }
 
   @override
@@ -503,8 +512,6 @@ class _$ProviderModelImpl extends _ProviderModel {
                 other.coveredByYourEpa == coveredByYourEpa) &&
             (identical(other.vettedByYourDepartment, vettedByYourDepartment) ||
                 other.vettedByYourDepartment == vettedByYourDepartment) &&
-            const DeepCollectionEquality()
-                .equals(other._preferences, _preferences) &&
             (identical(other.specialtyAndExpertise, specialtyAndExpertise) ||
                 other.specialtyAndExpertise == specialtyAndExpertise) &&
             (identical(other.clientFocus, clientFocus) ||
@@ -514,7 +521,9 @@ class _$ProviderModelImpl extends _ProviderModel {
             (identical(other.qualifications, qualifications) ||
                 other.qualifications == qualifications) &&
             (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated));
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.preferences, preferences) ||
+                other.preferences == preferences));
   }
 
   @override
@@ -534,12 +543,12 @@ class _$ProviderModelImpl extends _ProviderModel {
         inYourInsuranceNetwork,
         coveredByYourEpa,
         vettedByYourDepartment,
-        const DeepCollectionEquality().hash(_preferences),
         specialtyAndExpertise,
         clientFocus,
         const DeepCollectionEquality().hash(_treatmentApproaches),
         qualifications,
-        lastUpdated
+        lastUpdated,
+        preferences
       ]);
 
   /// Create a copy of ProviderModel
@@ -567,12 +576,12 @@ abstract class _ProviderModel extends ProviderModel {
       final bool inYourInsuranceNetwork,
       final bool coveredByYourEpa,
       final bool vettedByYourDepartment,
-      final List<String> preferences,
       final String specialtyAndExpertise,
       final ProviderClientFocusModel clientFocus,
       final List<String> treatmentApproaches,
       final String qualifications,
-      final Timestamp? lastUpdated}) = _$ProviderModelImpl;
+      final Timestamp? lastUpdated,
+      final PreferenceModel? preferences}) = _$ProviderModelImpl;
   const _ProviderModel._() : super._();
 
   @override
@@ -604,8 +613,6 @@ abstract class _ProviderModel extends ProviderModel {
   @override
   bool get vettedByYourDepartment;
   @override
-  List<String> get preferences;
-  @override
   String get specialtyAndExpertise;
   @override
   ProviderClientFocusModel get clientFocus;
@@ -615,6 +622,8 @@ abstract class _ProviderModel extends ProviderModel {
   String get qualifications;
   @override
   Timestamp? get lastUpdated;
+  @override
+  PreferenceModel? get preferences;
 
   /// Create a copy of ProviderModel
   /// with the given fields replaced by the non-null parameter values.

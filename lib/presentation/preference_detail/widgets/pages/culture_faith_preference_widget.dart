@@ -56,15 +56,8 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
               return preferencesProvider.when(
                 loading: () => const Center(child: CircularProgressIndicator()),
                 loaded: (preferences) {
-                  List<String> currentCulturesValue = [];
-                  List<String> currentFaithsValue = [];
-                  preferences.cultureAndFaithPreferenceModel.mappedSettings.maybeWhen(
-                    cultureAndFaith: (cultures, faiths) {
-                      currentCulturesValue = cultures;
-                      currentFaithsValue = faiths;
-                    },
-                    orElse: () => [],
-                  );
+                  final List<String> currentCulturesValue = preferences.getCulturesAndFaiths().$1;
+                  final List<String> currentFaithsValue = preferences.getCulturesAndFaiths().$2;
                   List<String> writtenItems = [];
                   for (final element in currentCulturesValue) {
                     if (!culturesList.contains(element)) {

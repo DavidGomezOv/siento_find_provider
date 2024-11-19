@@ -61,11 +61,7 @@ class _InsurancePreferenceWidgetState extends State<InsurancePreferenceWidget> {
               return preferencesProvider.when(
                 loading: () => const Center(child: CircularProgressIndicator()),
                 loaded: (preferences) {
-                  final List<String> currentPreferenceValue =
-                      preferences.insurancePreferenceModel.mappedSettings.maybeWhen(
-                    insurance: (insurances) => insurances,
-                    orElse: () => [],
-                  );
+                  final List<String> currentPreferenceValue = preferences.getInsurances();
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [

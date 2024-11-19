@@ -7,11 +7,13 @@ class ProviderSpecificInformationWidget extends StatelessWidget {
     required this.icons,
     required this.label,
     this.fontSize = 14,
+    this.fontWeight,
   });
 
   final List<Icon> icons;
   final String label;
   final double fontSize;
+  final FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +21,13 @@ class ProviderSpecificInformationWidget extends StatelessWidget {
       children: [
         ...icons,
         const SizedBox(width: 5),
-        Text(
-          label,
-          style: UiTextStyle.tabsTextStyle.copyWith(fontSize: fontSize),
+        Expanded(
+          child: Text(
+            label,
+            style: UiTextStyle.tabsTextStyle.copyWith(fontSize: fontSize, fontWeight: fontWeight),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );

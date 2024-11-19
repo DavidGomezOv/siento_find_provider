@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:siento_find_provider/core/enums.dart';
+import 'package:siento_find_provider/domain/models/preferences/preference_model.dart';
 import 'package:siento_find_provider/domain/models/provider/provider_client_focus_model.dart';
 import 'package:collection/collection.dart';
 
@@ -25,12 +26,12 @@ class ProviderModel with _$ProviderModel {
     @Default(false) bool inYourInsuranceNetwork,
     @Default(false) bool coveredByYourEpa,
     @Default(false) bool vettedByYourDepartment,
-    @Default([]) List<String> preferences,
     @Default('') String specialtyAndExpertise,
     @Default(ProviderClientFocusModel()) ProviderClientFocusModel clientFocus,
     @Default([]) List<String> treatmentApproaches,
     @Default('') String qualifications,
     Timestamp? lastUpdated,
+    PreferenceModel? preferences,
   }) = _ProviderModel;
 
   factory ProviderModel.fromJson(Map<String, dynamic> json) {
@@ -52,13 +53,15 @@ class ProviderModel with _$ProviderModel {
       inYourInsuranceNetwork: json['inYourInsuranceNetwork'] ?? false,
       coveredByYourEpa: json['coveredByYourEpa'] ?? false,
       vettedByYourDepartment: json['vettedByYourDepartment'] ?? false,
-      preferences: json['preferences'] != null ? json['preferences'].cast<String>() : [],
       specialtyAndExpertise: json['specialtyAndExpertise'] ?? '',
       clientFocus: ProviderClientFocusModel.fromJson(json['clientFocus'] ?? {}),
       treatmentApproaches:
           json['treatmentApproaches'] != null ? json['treatmentApproaches'].cast<String>() : [],
       qualifications: json['qualifications'] ?? '',
       lastUpdated: json['lastUpdated'],
+      preferences: json['preferences'] != null
+          ? PreferenceModel.fromFirebaseJson(json['preferences'] as Map<String, dynamic>)
+          : null,
     );
   }
 

@@ -276,7 +276,7 @@ class __$$PreferenceModelImplCopyWithImpl<$Res>
 
 class _$PreferenceModelImpl extends _PreferenceModel {
   _$PreferenceModelImpl(
-      {required this.userId,
+      {this.userId = '',
       this.locationPreferenceModel = const PreferenceItemModel(
           preferenceIntType: 1,
           mappedSettings: PreferenceSettingModel.location()),
@@ -298,6 +298,7 @@ class _$PreferenceModelImpl extends _PreferenceModel {
       : super._();
 
   @override
+  @JsonKey()
   final String userId;
   @override
   @JsonKey()
@@ -376,7 +377,7 @@ class _$PreferenceModelImpl extends _PreferenceModel {
 
 abstract class _PreferenceModel extends PreferenceModel {
   factory _PreferenceModel(
-          {required final String userId,
+          {final String userId,
           final PreferenceItemModel locationPreferenceModel,
           final PreferenceItemModel insurancePreferenceModel,
           final PreferenceItemModel topicsOfInterestPreferenceModel,

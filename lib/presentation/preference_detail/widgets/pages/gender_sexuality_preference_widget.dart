@@ -45,15 +45,8 @@ class GenderSexualityPreferenceWidget extends StatelessWidget {
               return preferencesProvider.when(
                 loading: () => const Center(child: CircularProgressIndicator()),
                 loaded: (preferences) {
-                  List<String> selectedGenders = [];
-                  String selectedIdentityOption = '';
-                  preferences.genderAndSexualityPreferenceModel.mappedSettings.maybeWhen(
-                    genderAndSexuality: (genders, providerIdentifiesAs) {
-                      selectedGenders = genders;
-                      selectedIdentityOption = providerIdentifiesAs;
-                    },
-                    orElse: () {},
-                  );
+                  final List<String> selectedGenders = preferences.getGenders().$1;
+                  String selectedIdentityOption = preferences.getGenders().$2;
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
