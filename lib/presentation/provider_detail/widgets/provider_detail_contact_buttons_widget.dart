@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:siento_find_provider/theme/ui_colors.dart';
 import 'package:siento_find_provider/theme/ui_text_style.dart';
+import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 class ProviderDetailContactButtonsWidget extends StatelessWidget {
   const ProviderDetailContactButtonsWidget({
@@ -30,9 +31,10 @@ class ProviderDetailContactButtonsWidget extends StatelessWidget {
                     ),
                     backgroundColor: UiColors.white,
                   ),
-                  onPressed: () {
-                    //TODO Email Message
-                  },
+                  onPressed: () async => await url_launcher.launchUrl(
+                    Uri.parse('mailto:${email.trim().toLowerCase()}'),
+                    mode: url_launcher.LaunchMode.externalApplication,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -57,9 +59,10 @@ class ProviderDetailContactButtonsWidget extends StatelessWidget {
                     shape: const StadiumBorder(),
                     backgroundColor: UiColors.requestButton,
                   ),
-                  onPressed: () {
-                    //TODO Phone Call
-                  },
+                  onPressed: () async => await url_launcher.launchUrl(
+                    Uri.parse('tel:${email.trim().toLowerCase()}'),
+                    mode: url_launcher.LaunchMode.externalApplication,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
