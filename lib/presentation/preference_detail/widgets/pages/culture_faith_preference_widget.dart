@@ -25,8 +25,23 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
   final TextEditingController controllerCultural = TextEditingController();
   final TextEditingController controllerFaith = TextEditingController();
 
+  final FocusNode focusNodeCultural = FocusNode();
+  final FocusNode focusNodeFaith = FocusNode();
+
+  String cultureForUpdate = '';
+  String faithForUpdate = '';
+
+  void _reset() {
+    controllerCultural.clear();
+    controllerFaith.clear();
+    cultureForUpdate = '';
+    faithForUpdate = '';
+  }
+
   @override
   void dispose() {
+    focusNodeCultural.dispose();
+    focusNodeFaith.dispose();
     controllerCultural.dispose();
     controllerFaith.dispose();
     super.dispose();
@@ -76,7 +91,9 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
                       _CulturesSection(
                         currentSelectedCultures: currentCulturesValue,
                         controller: controllerCultural,
+                        focusNode: focusNodeCultural,
                         onTap: (label) {
+                          _reset();
                           PreferenceItemModel cultureFaithPreference;
                           if (currentCulturesValue.contains(label)) {
                             cultureFaithPreference =
@@ -98,20 +115,39 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
                           widget.onSavePreference(cultureFaithPreference);
                         },
                         onSubmittedText: (value) {
-                          if (currentCulturesValue.contains(value)) {
-                            showCommonSnackBar(context, 'Culture already in the List');
+                          PreferenceItemModel cultureFaithPreference;
+                          if (cultureForUpdate.isNotEmpty) {
+                            final updatedList = currentCulturesValue
+                                .map(
+                                  (element) => element != cultureForUpdate ? element : value,
+                                )
+                                .toList();
+                            cultureFaithPreference =
+                                preferences.cultureAndFaithPreferenceModel.copyWith(
+                              mappedSettings: PreferenceSettingModel.cultureAndFaith(
+                                cultures: updatedList,
+                                faiths: currentFaithsValue,
+                              ),
+                            );
+                            widget.onSavePreference(cultureFaithPreference);
+                            _reset();
                             return;
                           }
-                          controllerCultural.clear();
-                          final cultureFaithPreference =
-                              preferences.cultureAndFaithPreferenceModel.copyWith(
-                            mappedSettings: PreferenceSettingModel.cultureAndFaith(
-                              cultures: List.from(currentCulturesValue)..add(value),
-                              faiths: currentFaithsValue,
-                            ),
-                          );
-                          widget.onSavePreference(cultureFaithPreference);
+                          if (currentCulturesValue.contains(value)) {
+                            showCommonSnackBar(context, 'Culture already in the List');
+                          } else {
+                            cultureFaithPreference =
+                                preferences.cultureAndFaithPreferenceModel.copyWith(
+                              mappedSettings: PreferenceSettingModel.cultureAndFaith(
+                                cultures: List.from(currentCulturesValue)..add(value),
+                                faiths: currentFaithsValue,
+                              ),
+                            );
+                            widget.onSavePreference(cultureFaithPreference);
+                          }
+                          _reset();
                         },
+                        onClearTextField: () => cultureForUpdate = '',
                       ),
                       const SizedBox(height: 30),
                       if (writtenCulturesItems.isNotEmpty) ...[
@@ -123,6 +159,8 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
                         WrittenItemsListWidget(
                           writtenItems: writtenCulturesItems,
                           onDelete: (String item) {
+                            cultureForUpdate = '';
+                            faithForUpdate = '';
                             PreferenceItemModel preferenceItemModel =
                                 preferences.cultureAndFaithPreferenceModel.copyWith(
                               mappedSettings: PreferenceSettingModel.cultureAndFaith(
@@ -131,18 +169,25 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
                               ),
                             );
                             widget.onSavePreference(preferenceItemModel);
+                            _reset();
                           },
-                          onUpdate: (String item) {},
+                          onUpdate: (String item) {
+                            cultureForUpdate = item;
+                            controllerCultural.text = item;
+                            focusNodeCultural.requestFocus();
+                          },
                         ),
                       ],
                       const Padding(
-                        padding: EdgeInsets.only(left: 10, top: 40, right: 10, bottom: 30),
+                        padding: EdgeInsets.only(left: 10, top: 30, right: 10, bottom: 30),
                         child: Divider(height: 1, color: UiColors.lightGray, thickness: 1),
                       ),
                       _FaithSection(
                         currentSelectedFaiths: currentFaithsValue,
-                        controller: controllerCultural,
+                        controller: controllerFaith,
+                        focusNode: focusNodeFaith,
                         onTap: (label) {
+                          _reset();
                           PreferenceItemModel cultureFaithPreference;
                           if (currentFaithsValue.contains(label)) {
                             cultureFaithPreference =
@@ -164,20 +209,39 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
                           widget.onSavePreference(cultureFaithPreference);
                         },
                         onSubmittedText: (value) {
-                          if (currentFaithsValue.contains(value)) {
-                            showCommonSnackBar(context, 'Faith already in the List');
+                          PreferenceItemModel cultureFaithPreference;
+                          if (faithForUpdate.isNotEmpty) {
+                            final updatedList = currentFaithsValue
+                                .map(
+                                  (element) => element != faithForUpdate ? element : value,
+                                )
+                                .toList();
+                            cultureFaithPreference =
+                                preferences.cultureAndFaithPreferenceModel.copyWith(
+                              mappedSettings: PreferenceSettingModel.cultureAndFaith(
+                                cultures: currentCulturesValue,
+                                faiths: updatedList,
+                              ),
+                            );
+                            widget.onSavePreference(cultureFaithPreference);
+                            _reset();
                             return;
                           }
-                          controllerCultural.clear();
-                          final cultureFaithPreference =
-                              preferences.cultureAndFaithPreferenceModel.copyWith(
-                            mappedSettings: PreferenceSettingModel.cultureAndFaith(
-                              cultures: currentCulturesValue,
-                              faiths: List.from(currentFaithsValue)..add(value),
-                            ),
-                          );
-                          widget.onSavePreference(cultureFaithPreference);
+                          if (currentFaithsValue.contains(value)) {
+                            showCommonSnackBar(context, 'Faith already in the List');
+                          } else {
+                            cultureFaithPreference =
+                                preferences.cultureAndFaithPreferenceModel.copyWith(
+                              mappedSettings: PreferenceSettingModel.cultureAndFaith(
+                                cultures: currentCulturesValue,
+                                faiths: List.from(currentFaithsValue)..add(value),
+                              ),
+                            );
+                            widget.onSavePreference(cultureFaithPreference);
+                          }
+                          _reset();
                         },
+                        onClearTextField: () => cultureForUpdate = '',
                       ),
                       const SizedBox(height: 30),
                       if (writtenFaithsItems.isNotEmpty) ...[
@@ -197,8 +261,13 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
                               ),
                             );
                             widget.onSavePreference(preferenceItemModel);
+                            _reset();
                           },
-                          onUpdate: (String item) {},
+                          onUpdate: (String item) {
+                            faithForUpdate = item;
+                            controllerFaith.text = item;
+                            focusNodeFaith.requestFocus();
+                          },
                         ),
                       ],
                     ],
@@ -218,14 +287,18 @@ class _CulturesSection extends StatelessWidget {
   const _CulturesSection({
     required this.currentSelectedCultures,
     required this.controller,
+    required this.focusNode,
     required this.onTap,
     required this.onSubmittedText,
+    required this.onClearTextField,
   });
 
   final List<String> currentSelectedCultures;
   final TextEditingController controller;
+  final FocusNode focusNode;
   final Function(String label) onTap;
   final Function(String value) onSubmittedText;
+  final Function() onClearTextField;
 
   @override
   Widget build(BuildContext context) {
@@ -263,8 +336,17 @@ class _CulturesSection extends StatelessWidget {
         const SizedBox(height: 10),
         CustomTextFieldWidget(
           controller: controller,
+          focusNode: focusNode,
           hintText: 'Your cultural interest',
           onSubmitted: onSubmittedText,
+          suffix: GestureDetector(
+            onTap: () {
+              focusNode.unfocus();
+              controller.clear();
+              onClearTextField();
+            },
+            child: const Icon(Icons.close_outlined, color: UiColors.lightGray),
+          ),
         ),
       ],
     );
@@ -275,14 +357,18 @@ class _FaithSection extends StatelessWidget {
   const _FaithSection({
     required this.currentSelectedFaiths,
     required this.controller,
+    required this.focusNode,
     required this.onTap,
     required this.onSubmittedText,
+    required this.onClearTextField,
   });
 
   final List<String> currentSelectedFaiths;
   final TextEditingController controller;
+  final FocusNode focusNode;
   final Function(String label) onTap;
   final Function(String value) onSubmittedText;
+  final Function() onClearTextField;
 
   @override
   Widget build(BuildContext context) {
@@ -319,8 +405,17 @@ class _FaithSection extends StatelessWidget {
         const SizedBox(height: 10),
         CustomTextFieldWidget(
           controller: controller,
+          focusNode: focusNode,
           hintText: 'Your faith interest',
           onSubmitted: onSubmittedText,
+          suffix: GestureDetector(
+            onTap: () {
+              focusNode.unfocus();
+              controller.clear();
+              onClearTextField();
+            },
+            child: const Icon(Icons.close_outlined, color: UiColors.lightGray),
+          ),
         ),
       ],
     );

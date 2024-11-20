@@ -27,6 +27,11 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
 
   String itemForUpdate = '';
 
+  void _reset() {
+    controller.clear();
+    itemForUpdate = '';
+  }
+
   @override
   void dispose() {
     controller.dispose();
@@ -82,6 +87,7 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
                       _DefaultOptionsList(
                         defaultSelectedTopics: defaultSelectedTopics,
                         onTap: (String label) {
+                          _reset();
                           PreferenceItemModel insurancesPreference;
                           if (defaultSelectedTopics.contains(label)) {
                             insurancesPreference =
@@ -113,9 +119,8 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
                         hintText: 'Other topics',
                         suffix: GestureDetector(
                           onTap: () {
-                            itemForUpdate = '';
+                            _reset();
                             focusNode.unfocus();
-                            controller.clear();
                           },
                           child: const Icon(Icons.close_outlined, color: UiColors.lightGray),
                         ),
@@ -135,11 +140,11 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
                             );
                             widget.onSavePreference(insurancesPreference);
                             controller.clear();
+                            _reset();
                             return;
                           }
                           if (currentPreferenceValue.contains(value)) {
                             showCommonSnackBar(context, 'Topic already in the List');
-                            return;
                           } else {
                             insurancesPreference =
                                 preferences.topicsOfInterestPreferenceModel.copyWith(
@@ -148,8 +153,9 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
                               ),
                             );
                             widget.onSavePreference(insurancesPreference);
+                            controller.clear();
                           }
-                          controller.clear();
+                          _reset();
                         },
                       ),
                       const SizedBox(height: 30),
@@ -168,6 +174,7 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
                             ),
                           );
                           widget.onSavePreference(insurancesPreference);
+                          _reset();
                         },
                         onUpdate: (item) {
                           itemForUpdate = item;
