@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:siento_find_provider/presentation/provider_detail/widgets/vetted_meaning_dialog_content.dart';
+import 'package:siento_find_provider/presentation/widgets/show_custom_dialog.dart';
 import 'package:siento_find_provider/theme/ui_colors.dart';
 import 'package:siento_find_provider/domain/models/provider/provider_client_focus_model.dart';
 import 'package:siento_find_provider/domain/models/provider/provider_model.dart';
@@ -46,16 +48,22 @@ class ProviderDetailAdditionalInformationWidget extends StatelessWidget {
           if (selectedProvider.vettedByYourDepartment)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-              child: ProviderSpecificInformationWidget(
-                icons: const [
-                  Icon(
-                    Icons.check_circle_outline_rounded,
-                    color: UiColors.lightBlue,
-                    size: 24,
-                  ),
-                ],
-                label: 'Vetted by your department',
-                fontSize: 15.sp,
+              child: GestureDetector(
+                onTap: () => showCustomDialog(
+                  context,
+                  content: const VettedMeaningDialogContent(),
+                ),
+                child: ProviderSpecificInformationWidget(
+                  icons: const [
+                    Icon(
+                      Icons.check_circle_outline_rounded,
+                      color: UiColors.lightBlue,
+                      size: 24,
+                    ),
+                  ],
+                  label: 'Vetted by your department',
+                  fontSize: 15.sp,
+                ),
               ),
             ),
         ],

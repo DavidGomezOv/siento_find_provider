@@ -16,7 +16,7 @@ void showCustomDialog(
     builder: (context) {
       return Dialog(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(12.0),
         ),
         backgroundColor: backgroundColor,
         alignment: alignment,
