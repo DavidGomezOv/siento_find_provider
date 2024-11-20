@@ -58,15 +58,16 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
                 loaded: (preferences) {
                   final List<String> currentCulturesValue = preferences.getCulturesAndFaiths().$1;
                   final List<String> currentFaithsValue = preferences.getCulturesAndFaiths().$2;
-                  List<String> writtenItems = [];
+                  List<String> writtenCulturesItems = [];
+                  List<String> writtenFaithsItems = [];
                   for (final element in currentCulturesValue) {
                     if (!culturesList.contains(element)) {
-                      writtenItems.add(element);
+                      writtenCulturesItems.add(element);
                     }
                   }
                   for (final element in currentFaithsValue) {
                     if (!faithsList.contains(element)) {
-                      writtenItems.add(element);
+                      writtenFaithsItems.add(element);
                     }
                   }
                   return Column(
@@ -112,6 +113,28 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
                           widget.onSavePreference(cultureFaithPreference);
                         },
                       ),
+                      const SizedBox(height: 30),
+                      if (writtenCulturesItems.isNotEmpty) ...[
+                        Text(
+                          'Written religion topics:',
+                          style: UiTextStyle.primaryTextStyle,
+                        ),
+                        const SizedBox(height: 10),
+                        WrittenItemsListWidget(
+                          writtenItems: writtenCulturesItems,
+                          onDelete: (String item) {
+                            PreferenceItemModel preferenceItemModel =
+                                preferences.cultureAndFaithPreferenceModel.copyWith(
+                              mappedSettings: PreferenceSettingModel.cultureAndFaith(
+                                cultures: List.from(currentCulturesValue)..remove(item),
+                                faiths: currentFaithsValue,
+                              ),
+                            );
+                            widget.onSavePreference(preferenceItemModel);
+                          },
+                          onUpdate: (String item) {},
+                        ),
+                      ],
                       const Padding(
                         padding: EdgeInsets.only(left: 10, top: 40, right: 10, bottom: 30),
                         child: Divider(height: 1, color: UiColors.lightGray, thickness: 1),
@@ -157,34 +180,22 @@ class _CultureFaithPreferenceWidgetState extends State<CultureFaithPreferenceWid
                         },
                       ),
                       const SizedBox(height: 30),
-                      if (writtenItems.isNotEmpty) ...[
+                      if (writtenFaithsItems.isNotEmpty) ...[
                         Text(
-                          'Written in culture and religion topics:',
+                          'Written religion topics:',
                           style: UiTextStyle.primaryTextStyle,
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
                         WrittenItemsListWidget(
-                          writtenItems: writtenItems,
+                          writtenItems: writtenFaithsItems,
                           onDelete: (String item) {
-                            PreferenceItemModel preferenceItemModel;
-                            final isFromCultures = currentCulturesValue.contains(item);
-                            if (isFromCultures) {
-                              preferenceItemModel =
-                                  preferences.cultureAndFaithPreferenceModel.copyWith(
-                                mappedSettings: PreferenceSettingModel.cultureAndFaith(
-                                  cultures: List.from(currentCulturesValue)..remove(item),
-                                  faiths: currentFaithsValue,
-                                ),
-                              );
-                            } else {
-                              preferenceItemModel =
-                                  preferences.cultureAndFaithPreferenceModel.copyWith(
-                                mappedSettings: PreferenceSettingModel.cultureAndFaith(
-                                  cultures: currentCulturesValue,
-                                  faiths: List.from(currentFaithsValue)..remove(item),
-                                ),
-                              );
-                            }
+                            PreferenceItemModel preferenceItemModel =
+                                preferences.cultureAndFaithPreferenceModel.copyWith(
+                              mappedSettings: PreferenceSettingModel.cultureAndFaith(
+                                cultures: currentCulturesValue,
+                                faiths: List.from(currentFaithsValue)..remove(item),
+                              ),
+                            );
                             widget.onSavePreference(preferenceItemModel);
                           },
                           onUpdate: (String item) {},

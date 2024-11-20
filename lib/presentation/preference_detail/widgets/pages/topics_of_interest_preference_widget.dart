@@ -9,6 +9,7 @@ import 'package:siento_find_provider/presentation/preference_detail/widgets/writ
 import 'package:siento_find_provider/presentation/widgets/custom_error_widget.dart';
 import 'package:siento_find_provider/presentation/widgets/snackbar_widget.dart';
 import 'package:siento_find_provider/shared/preferences/preferences_di_helper.dart';
+import 'package:siento_find_provider/theme/ui_colors.dart';
 import 'package:siento_find_provider/theme/ui_text_style.dart';
 
 class TopicsOfInterestPreferenceWidget extends StatefulWidget {
@@ -22,10 +23,14 @@ class TopicsOfInterestPreferenceWidget extends StatefulWidget {
 
 class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPreferenceWidget> {
   final TextEditingController controller = TextEditingController();
+  final FocusNode focusNode = FocusNode();
+
+  String itemForUpdate = '';
 
   @override
   void dispose() {
     controller.dispose();
+    focusNode.dispose();
     super.dispose();
   }
 
@@ -104,20 +109,47 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
                       const SizedBox(height: 10),
                       CustomTextFieldWidget(
                         controller: controller,
+                        focusNode: focusNode,
                         hintText: 'Other topics',
+                        suffix: GestureDetector(
+                          onTap: () {
+                            itemForUpdate = '';
+                            focusNode.unfocus();
+                            controller.clear();
+                          },
+                          child: const Icon(Icons.close_outlined, color: UiColors.lightGray),
+                        ),
                         onSubmitted: (value) {
+                          PreferenceItemModel insurancesPreference;
+                          if (itemForUpdate.isNotEmpty) {
+                            final updatedList = currentPreferenceValue
+                                .map(
+                                  (element) => element != itemForUpdate ? element : value,
+                                )
+                                .toList();
+                            insurancesPreference =
+                                preferences.topicsOfInterestPreferenceModel.copyWith(
+                              mappedSettings: PreferenceSettingModel.topicsOfInterest(
+                                topicsOfInterest: updatedList,
+                              ),
+                            );
+                            widget.onSavePreference(insurancesPreference);
+                            controller.clear();
+                            return;
+                          }
                           if (currentPreferenceValue.contains(value)) {
                             showCommonSnackBar(context, 'Topic already in the List');
                             return;
+                          } else {
+                            insurancesPreference =
+                                preferences.topicsOfInterestPreferenceModel.copyWith(
+                              mappedSettings: PreferenceSettingModel.topicsOfInterest(
+                                topicsOfInterest: List.from(currentPreferenceValue)..add(value),
+                              ),
+                            );
+                            widget.onSavePreference(insurancesPreference);
                           }
                           controller.clear();
-                          final insurancesPreference =
-                              preferences.topicsOfInterestPreferenceModel.copyWith(
-                            mappedSettings: PreferenceSettingModel.topicsOfInterest(
-                              topicsOfInterest: List.from(currentPreferenceValue)..add(value),
-                            ),
-                          );
-                          widget.onSavePreference(insurancesPreference);
                         },
                       ),
                       const SizedBox(height: 30),
@@ -125,6 +157,7 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
                         'Written in topics of interest:',
                         style: UiTextStyle.primaryTextStyle,
                       ),
+                      const SizedBox(height: 10),
                       WrittenItemsListWidget(
                         writtenItems: writtenTopics,
                         onDelete: (item) {
@@ -136,7 +169,11 @@ class _TopicsOfInterestPreferenceWidgetState extends State<TopicsOfInterestPrefe
                           );
                           widget.onSavePreference(insurancesPreference);
                         },
-                        onUpdate: (item) {},
+                        onUpdate: (item) {
+                          itemForUpdate = item;
+                          controller.text = item;
+                          focusNode.requestFocus();
+                        },
                       ),
                     ],
                   );

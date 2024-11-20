@@ -9,20 +9,29 @@ class CustomTextFieldWidget extends StatelessWidget {
     required this.hintText,
     required this.onSubmitted,
     this.controller,
+    this.focusNode,
+    this.suffix,
   });
 
   final String hintText;
   final Function(String value) onSubmitted;
   final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      focusNode: focusNode,
       controller: controller,
       textInputAction: TextInputAction.done,
       onSubmitted: onSubmitted,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+        suffixIcon: Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: suffix,
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
         filled: true,
         fillColor: UiColors.white,
         enabledBorder: const OutlineInputBorder(
@@ -39,6 +48,7 @@ class CustomTextFieldWidget extends StatelessWidget {
           color: UiColors.lightGray,
         ),
       ),
+      textAlignVertical: TextAlignVertical.center,
       style: UiTextStyle.primaryTextStyle.copyWith(fontSize: 15.sp),
     );
   }
