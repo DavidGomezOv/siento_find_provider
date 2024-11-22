@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_model.dart';
-import 'package:siento_find_provider/domain/use_cases/preferences_use_cases.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_model.dart';
+import 'package:siento_find_therapist/domain/use_cases/preferences_use_cases.dart';
 
 part 'preferences_state.dart';
 

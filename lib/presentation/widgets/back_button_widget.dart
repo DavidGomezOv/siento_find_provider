@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:siento_find_provider/theme/ui_colors.dart';
-import 'package:siento_find_provider/theme/ui_text_style.dart';
+import 'package:siento_find_therapist/theme/ui_colors.dart';
+import 'package:siento_find_therapist/theme/ui_text_style.dart';
 
 class BackButtonWidget extends StatelessWidget {
   const BackButtonWidget({super.key});

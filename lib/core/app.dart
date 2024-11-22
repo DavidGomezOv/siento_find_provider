@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:siento_find_provider/routes/app_router.dart';
+import 'package:siento_find_therapist/routes/app_router.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});

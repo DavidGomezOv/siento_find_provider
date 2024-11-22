@@ -62,7 +62,7 @@ const gendersList = [
   'No preference',
 ];
 
-const providerIdentitiesOptions = [
+const therapistIdentitiesOptions = [
   'Yes',
   'No',
   'No preference',

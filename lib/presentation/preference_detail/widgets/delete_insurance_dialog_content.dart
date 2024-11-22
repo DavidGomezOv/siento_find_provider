@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:siento_find_provider/theme/ui_colors.dart';
-import 'package:siento_find_provider/theme/ui_text_style.dart';
+import 'package:siento_find_therapist/theme/ui_colors.dart';
+import 'package:siento_find_therapist/theme/ui_text_style.dart';
 
 class DeleteInsuranceDialogContent extends StatelessWidget {
   const DeleteInsuranceDialogContent({super.key, required this.onDelete});

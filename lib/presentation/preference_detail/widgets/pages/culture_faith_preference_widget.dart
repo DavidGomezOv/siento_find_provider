@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:siento_find_provider/core/const_values.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_item_model.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_setting_model.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/custom_text_field_widget.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/selectable_button_widget.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/written_items_list_widget.dart';
-import 'package:siento_find_provider/presentation/widgets/custom_error_widget.dart';
-import 'package:siento_find_provider/presentation/widgets/snackbar_widget.dart';
-import 'package:siento_find_provider/shared/preferences/preferences_di_helper.dart';
-import 'package:siento_find_provider/theme/ui_colors.dart';
-import 'package:siento_find_provider/theme/ui_text_style.dart';
+import 'package:siento_find_therapist/core/const_values.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_item_model.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_setting_model.dart';
+import 'package:siento_find_therapist/presentation/preference_detail/widgets/custom_text_field_widget.dart';
+import 'package:siento_find_therapist/presentation/preference_detail/widgets/selectable_button_widget.dart';
+import 'package:siento_find_therapist/presentation/preference_detail/widgets/written_items_list_widget.dart';
+import 'package:siento_find_therapist/presentation/widgets/custom_error_widget.dart';
+import 'package:siento_find_therapist/presentation/widgets/snackbar_widget.dart';
+import 'package:siento_find_therapist/shared/preferences/preferences_di_helper.dart';
+import 'package:siento_find_therapist/theme/ui_colors.dart';
+import 'package:siento_find_therapist/theme/ui_text_style.dart';
 
 class CultureFaithPreferenceWidget extends StatefulWidget {
   const CultureFaithPreferenceWidget({super.key, required this.onSavePreference});

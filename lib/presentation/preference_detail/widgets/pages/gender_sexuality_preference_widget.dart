@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:siento_find_provider/core/const_values.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_item_model.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_setting_model.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/custom_radio_button_widget.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/selectable_button_widget.dart';
-import 'package:siento_find_provider/presentation/widgets/custom_error_widget.dart';
-import 'package:siento_find_provider/presentation/widgets/snackbar_widget.dart';
-import 'package:siento_find_provider/shared/preferences/preferences_di_helper.dart';
-import 'package:siento_find_provider/theme/ui_text_style.dart';
+import 'package:siento_find_therapist/core/const_values.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_item_model.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_setting_model.dart';
+import 'package:siento_find_therapist/presentation/preference_detail/widgets/custom_radio_button_widget.dart';
+import 'package:siento_find_therapist/presentation/preference_detail/widgets/selectable_button_widget.dart';
+import 'package:siento_find_therapist/presentation/widgets/custom_error_widget.dart';
+import 'package:siento_find_therapist/presentation/widgets/snackbar_widget.dart';
+import 'package:siento_find_therapist/shared/preferences/preferences_di_helper.dart';
+import 'package:siento_find_therapist/theme/ui_text_style.dart';
 
 class GenderSexualityPreferenceWidget extends StatelessWidget {
   const GenderSexualityPreferenceWidget({super.key, required this.onSavePreference});
@@ -72,7 +72,7 @@ class GenderSexualityPreferenceWidget extends StatelessWidget {
                                         preferences.genderAndSexualityPreferenceModel.copyWith(
                                       mappedSettings: PreferenceSettingModel.genderAndSexuality(
                                         genders: List.from(selectedGenders)..remove(label),
-                                        providerIdentifiesAs: selectedIdentityOption,
+                                        therapistIdentifiesAs: selectedIdentityOption,
                                       ),
                                     );
                                   } else {
@@ -80,7 +80,7 @@ class GenderSexualityPreferenceWidget extends StatelessWidget {
                                         preferences.genderAndSexualityPreferenceModel.copyWith(
                                       mappedSettings: PreferenceSettingModel.genderAndSexuality(
                                         genders: List.from(selectedGenders)..add(label),
-                                        providerIdentifiesAs: selectedIdentityOption,
+                                        therapistIdentifiesAs: selectedIdentityOption,
                                       ),
                                     );
                                   }
@@ -97,14 +97,14 @@ class GenderSexualityPreferenceWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 20),
-                      ...providerIdentitiesOptions.map(
+                      ...therapistIdentitiesOptions.map(
                         (element) => CustomRadioButton(
                           label: element,
                           selected: selectedIdentityOption == element,
                           onChanged: (value) => onSavePreference(
                             preferences.genderAndSexualityPreferenceModel.copyWith(
                               mappedSettings: PreferenceSettingModel.genderAndSexuality(
-                                providerIdentifiesAs: value,
+                                therapistIdentifiesAs: value,
                                 genders: selectedGenders,
                               ),
                             ),

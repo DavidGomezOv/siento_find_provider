@@ -1,19 +1,19 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:siento_find_provider/domain/models/provider/provider_model.dart';
-import 'package:siento_find_provider/presentation/preference_detail/preference_detail_page.dart';
-import 'package:siento_find_provider/presentation/preferences/preferences_page.dart';
-import 'package:siento_find_provider/presentation/provider_detail/provider_detail_page.dart';
-import 'package:siento_find_provider/presentation/provider_list/provider_list_page.dart';
-import 'package:siento_find_provider/routes/app_route_data.dart';
+import 'package:siento_find_therapist/domain/models/therapist/therapist_model.dart';
+import 'package:siento_find_therapist/presentation/preference_detail/preference_detail_page.dart';
+import 'package:siento_find_therapist/presentation/preferences/preferences_page.dart';
+import 'package:siento_find_therapist/presentation/therapist_detail/therapist_detail_page.dart';
+import 'package:siento_find_therapist/presentation/therapist_list/therapist_list_page.dart';
+import 'package:siento_find_therapist/routes/app_route_data.dart';
 
 part 'app_router.g.dart';
 
 class AppRouter {
-  static final AppRouteData providerListRouteData = AppRouteData(name: 'list', path: '/list');
-  static final AppRouteData providerDetailRouteData =
-      AppRouteData(name: 'provider-detail', path: '/detail');
+  static final AppRouteData therapistsListRouteData = AppRouteData(name: 'list', path: '/list');
+  static final AppRouteData therapistDetailRouteData =
+      AppRouteData(name: 'therapist-detail', path: '/detail');
   static final AppRouteData preferencesRouteData =
       AppRouteData(name: 'preferences', path: '/preferences');
   static final AppRouteData preferenceDetailRouteData =
@@ -23,21 +23,21 @@ class AppRouter {
 @riverpod
 GoRouter goRouter(Ref ref) {
   return GoRouter(
-    initialLocation: AppRouter.providerListRouteData.path,
+    initialLocation: AppRouter.therapistsListRouteData.path,
     routes: [
       GoRoute(
-        path: AppRouter.providerListRouteData.path,
-        name: AppRouter.providerListRouteData.name,
-        builder: (context, state) => ProviderListPage(key: state.pageKey),
+        path: AppRouter.therapistsListRouteData.path,
+        name: AppRouter.therapistsListRouteData.name,
+        builder: (context, state) => TherapistListPage(key: state.pageKey),
         routes: [
           GoRoute(
-            path: AppRouter.providerDetailRouteData.path,
-            name: AppRouter.providerDetailRouteData.name,
+            path: AppRouter.therapistDetailRouteData.path,
+            name: AppRouter.therapistDetailRouteData.name,
             builder: (context, state) {
-              final ProviderModel selectedProvider = state.extra as ProviderModel;
-              return ProviderDetailPage(
+              final TherapistModel selectedTherapist = state.extra as TherapistModel;
+              return TherapistDetailPage(
                 key: state.pageKey,
-                selectedProvider: selectedProvider,
+                selectedTherapist: selectedTherapist,
               );
             },
           ),

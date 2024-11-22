@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_item_model.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_model.dart';
-import 'package:siento_find_provider/presentation/preference_detail/widgets/pages/preferences_detail_pages.dart';
-import 'package:siento_find_provider/presentation/widgets/back_button_widget.dart';
-import 'package:siento_find_provider/shared/preferences/preferences_di_helper.dart';
-import 'package:siento_find_provider/theme/ui_colors.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_item_model.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_model.dart';
+import 'package:siento_find_therapist/presentation/preference_detail/widgets/pages/preferences_detail_pages.dart';
+import 'package:siento_find_therapist/presentation/widgets/back_button_widget.dart';
+import 'package:siento_find_therapist/shared/preferences/preferences_di_helper.dart';
+import 'package:siento_find_therapist/theme/ui_colors.dart';
 
 class PreferenceDetailPage extends ConsumerWidget {
   const PreferenceDetailPage({

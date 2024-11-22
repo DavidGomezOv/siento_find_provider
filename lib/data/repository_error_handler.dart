@@ -1,4 +1,4 @@
-import 'package:siento_find_provider/core/result.dart';
+import 'package:siento_find_therapist/core/result.dart';
 
 typedef Call<T> = Future<T> Function();
 

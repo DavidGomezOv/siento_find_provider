@@ -52,7 +52,8 @@ mixin _$PreferenceSettingModel {
         serviceType,
     required TResult Function(List<String> cultures, List<String> faiths)
         cultureAndFaith,
-    required TResult Function(List<String> genders, String providerIdentifiesAs)
+    required TResult Function(
+            List<String> genders, String therapistIdentifiesAs)
         genderAndSexuality,
     required TResult Function() empty,
   }) =>
@@ -65,7 +66,7 @@ mixin _$PreferenceSettingModel {
     TResult? Function(String routeOfService, String typeOfService)? serviceType,
     TResult? Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult? Function(List<String> genders, String providerIdentifiesAs)?
+    TResult? Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult? Function()? empty,
   }) =>
@@ -78,7 +79,7 @@ mixin _$PreferenceSettingModel {
     TResult Function(String routeOfService, String typeOfService)? serviceType,
     TResult Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult Function(List<String> genders, String providerIdentifiesAs)?
+    TResult Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult Function()? empty,
     required TResult orElse(),
@@ -235,7 +236,8 @@ class _$LocationPreferenceImpl extends _LocationPreference {
         serviceType,
     required TResult Function(List<String> cultures, List<String> faiths)
         cultureAndFaith,
-    required TResult Function(List<String> genders, String providerIdentifiesAs)
+    required TResult Function(
+            List<String> genders, String therapistIdentifiesAs)
         genderAndSexuality,
     required TResult Function() empty,
   }) {
@@ -251,7 +253,7 @@ class _$LocationPreferenceImpl extends _LocationPreference {
     TResult? Function(String routeOfService, String typeOfService)? serviceType,
     TResult? Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult? Function(List<String> genders, String providerIdentifiesAs)?
+    TResult? Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult? Function()? empty,
   }) {
@@ -267,7 +269,7 @@ class _$LocationPreferenceImpl extends _LocationPreference {
     TResult Function(String routeOfService, String typeOfService)? serviceType,
     TResult Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult Function(List<String> genders, String providerIdentifiesAs)?
+    TResult Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult Function()? empty,
     required TResult orElse(),
@@ -448,7 +450,8 @@ class _$InsurancePreferencesImpl extends _InsurancePreferences {
         serviceType,
     required TResult Function(List<String> cultures, List<String> faiths)
         cultureAndFaith,
-    required TResult Function(List<String> genders, String providerIdentifiesAs)
+    required TResult Function(
+            List<String> genders, String therapistIdentifiesAs)
         genderAndSexuality,
     required TResult Function() empty,
   }) {
@@ -464,7 +467,7 @@ class _$InsurancePreferencesImpl extends _InsurancePreferences {
     TResult? Function(String routeOfService, String typeOfService)? serviceType,
     TResult? Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult? Function(List<String> genders, String providerIdentifiesAs)?
+    TResult? Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult? Function()? empty,
   }) {
@@ -480,7 +483,7 @@ class _$InsurancePreferencesImpl extends _InsurancePreferences {
     TResult Function(String routeOfService, String typeOfService)? serviceType,
     TResult Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult Function(List<String> genders, String providerIdentifiesAs)?
+    TResult Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult Function()? empty,
     required TResult orElse(),
@@ -664,7 +667,8 @@ class _$TopicsOfInterestPreferenceImpl extends _TopicsOfInterestPreference {
         serviceType,
     required TResult Function(List<String> cultures, List<String> faiths)
         cultureAndFaith,
-    required TResult Function(List<String> genders, String providerIdentifiesAs)
+    required TResult Function(
+            List<String> genders, String therapistIdentifiesAs)
         genderAndSexuality,
     required TResult Function() empty,
   }) {
@@ -680,7 +684,7 @@ class _$TopicsOfInterestPreferenceImpl extends _TopicsOfInterestPreference {
     TResult? Function(String routeOfService, String typeOfService)? serviceType,
     TResult? Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult? Function(List<String> genders, String providerIdentifiesAs)?
+    TResult? Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult? Function()? empty,
   }) {
@@ -696,7 +700,7 @@ class _$TopicsOfInterestPreferenceImpl extends _TopicsOfInterestPreference {
     TResult Function(String routeOfService, String typeOfService)? serviceType,
     TResult Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult Function(List<String> genders, String providerIdentifiesAs)?
+    TResult Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult Function()? empty,
     required TResult orElse(),
@@ -880,7 +884,8 @@ class _$ServiceTypePreferenceImpl extends _ServiceTypePreference {
         serviceType,
     required TResult Function(List<String> cultures, List<String> faiths)
         cultureAndFaith,
-    required TResult Function(List<String> genders, String providerIdentifiesAs)
+    required TResult Function(
+            List<String> genders, String therapistIdentifiesAs)
         genderAndSexuality,
     required TResult Function() empty,
   }) {
@@ -896,7 +901,7 @@ class _$ServiceTypePreferenceImpl extends _ServiceTypePreference {
     TResult? Function(String routeOfService, String typeOfService)? serviceType,
     TResult? Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult? Function(List<String> genders, String providerIdentifiesAs)?
+    TResult? Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult? Function()? empty,
   }) {
@@ -912,7 +917,7 @@ class _$ServiceTypePreferenceImpl extends _ServiceTypePreference {
     TResult Function(String routeOfService, String typeOfService)? serviceType,
     TResult Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult Function(List<String> genders, String providerIdentifiesAs)?
+    TResult Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult Function()? empty,
     required TResult orElse(),
@@ -1115,7 +1120,8 @@ class _$CultureAndFaithPreferenceImpl extends _CultureAndFaithPreference {
         serviceType,
     required TResult Function(List<String> cultures, List<String> faiths)
         cultureAndFaith,
-    required TResult Function(List<String> genders, String providerIdentifiesAs)
+    required TResult Function(
+            List<String> genders, String therapistIdentifiesAs)
         genderAndSexuality,
     required TResult Function() empty,
   }) {
@@ -1131,7 +1137,7 @@ class _$CultureAndFaithPreferenceImpl extends _CultureAndFaithPreference {
     TResult? Function(String routeOfService, String typeOfService)? serviceType,
     TResult? Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult? Function(List<String> genders, String providerIdentifiesAs)?
+    TResult? Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult? Function()? empty,
   }) {
@@ -1147,7 +1153,7 @@ class _$CultureAndFaithPreferenceImpl extends _CultureAndFaithPreference {
     TResult Function(String routeOfService, String typeOfService)? serviceType,
     TResult Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult Function(List<String> genders, String providerIdentifiesAs)?
+    TResult Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult Function()? empty,
     required TResult orElse(),
@@ -1240,7 +1246,7 @@ abstract class _$$GenderAndSexualityPreferenceImplCopyWith<$Res> {
           $Res Function(_$GenderAndSexualityPreferenceImpl) then) =
       __$$GenderAndSexualityPreferenceImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<String> genders, String providerIdentifiesAs});
+  $Res call({List<String> genders, String therapistIdentifiesAs});
 }
 
 /// @nodoc
@@ -1259,16 +1265,16 @@ class __$$GenderAndSexualityPreferenceImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? genders = null,
-    Object? providerIdentifiesAs = null,
+    Object? therapistIdentifiesAs = null,
   }) {
     return _then(_$GenderAndSexualityPreferenceImpl(
       genders: null == genders
           ? _value._genders
           : genders // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      providerIdentifiesAs: null == providerIdentifiesAs
-          ? _value.providerIdentifiesAs
-          : providerIdentifiesAs // ignore: cast_nullable_to_non_nullable
+      therapistIdentifiesAs: null == therapistIdentifiesAs
+          ? _value.therapistIdentifiesAs
+          : therapistIdentifiesAs // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1279,7 +1285,7 @@ class __$$GenderAndSexualityPreferenceImplCopyWithImpl<$Res>
 class _$GenderAndSexualityPreferenceImpl extends _GenderAndSexualityPreference {
   const _$GenderAndSexualityPreferenceImpl(
       {final List<String> genders = const [],
-      this.providerIdentifiesAs = '',
+      this.therapistIdentifiesAs = '',
       final String? $type})
       : _genders = genders,
         $type = $type ?? 'genderAndSexuality',
@@ -1300,14 +1306,14 @@ class _$GenderAndSexualityPreferenceImpl extends _GenderAndSexualityPreference {
 
   @override
   @JsonKey()
-  final String providerIdentifiesAs;
+  final String therapistIdentifiesAs;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'PreferenceSettingModel.genderAndSexuality(genders: $genders, providerIdentifiesAs: $providerIdentifiesAs)';
+    return 'PreferenceSettingModel.genderAndSexuality(genders: $genders, therapistIdentifiesAs: $therapistIdentifiesAs)';
   }
 
   @override
@@ -1316,14 +1322,14 @@ class _$GenderAndSexualityPreferenceImpl extends _GenderAndSexualityPreference {
         (other.runtimeType == runtimeType &&
             other is _$GenderAndSexualityPreferenceImpl &&
             const DeepCollectionEquality().equals(other._genders, _genders) &&
-            (identical(other.providerIdentifiesAs, providerIdentifiesAs) ||
-                other.providerIdentifiesAs == providerIdentifiesAs));
+            (identical(other.therapistIdentifiesAs, therapistIdentifiesAs) ||
+                other.therapistIdentifiesAs == therapistIdentifiesAs));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_genders), providerIdentifiesAs);
+      const DeepCollectionEquality().hash(_genders), therapistIdentifiesAs);
 
   /// Create a copy of PreferenceSettingModel
   /// with the given fields replaced by the non-null parameter values.
@@ -1345,11 +1351,12 @@ class _$GenderAndSexualityPreferenceImpl extends _GenderAndSexualityPreference {
         serviceType,
     required TResult Function(List<String> cultures, List<String> faiths)
         cultureAndFaith,
-    required TResult Function(List<String> genders, String providerIdentifiesAs)
+    required TResult Function(
+            List<String> genders, String therapistIdentifiesAs)
         genderAndSexuality,
     required TResult Function() empty,
   }) {
-    return genderAndSexuality(genders, providerIdentifiesAs);
+    return genderAndSexuality(genders, therapistIdentifiesAs);
   }
 
   @override
@@ -1361,11 +1368,11 @@ class _$GenderAndSexualityPreferenceImpl extends _GenderAndSexualityPreference {
     TResult? Function(String routeOfService, String typeOfService)? serviceType,
     TResult? Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult? Function(List<String> genders, String providerIdentifiesAs)?
+    TResult? Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult? Function()? empty,
   }) {
-    return genderAndSexuality?.call(genders, providerIdentifiesAs);
+    return genderAndSexuality?.call(genders, therapistIdentifiesAs);
   }
 
   @override
@@ -1377,13 +1384,13 @@ class _$GenderAndSexualityPreferenceImpl extends _GenderAndSexualityPreference {
     TResult Function(String routeOfService, String typeOfService)? serviceType,
     TResult Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult Function(List<String> genders, String providerIdentifiesAs)?
+    TResult Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult Function()? empty,
     required TResult orElse(),
   }) {
     if (genderAndSexuality != null) {
-      return genderAndSexuality(genders, providerIdentifiesAs);
+      return genderAndSexuality(genders, therapistIdentifiesAs);
     }
     return orElse();
   }
@@ -1447,14 +1454,14 @@ class _$GenderAndSexualityPreferenceImpl extends _GenderAndSexualityPreference {
 abstract class _GenderAndSexualityPreference extends PreferenceSettingModel {
   const factory _GenderAndSexualityPreference(
       {final List<String> genders,
-      final String providerIdentifiesAs}) = _$GenderAndSexualityPreferenceImpl;
+      final String therapistIdentifiesAs}) = _$GenderAndSexualityPreferenceImpl;
   const _GenderAndSexualityPreference._() : super._();
 
   factory _GenderAndSexualityPreference.fromJson(Map<String, dynamic> json) =
       _$GenderAndSexualityPreferenceImpl.fromJson;
 
   List<String> get genders;
-  String get providerIdentifiesAs;
+  String get therapistIdentifiesAs;
 
   /// Create a copy of PreferenceSettingModel
   /// with the given fields replaced by the non-null parameter values.
@@ -1521,7 +1528,8 @@ class _$EmptyImpl extends _Empty {
         serviceType,
     required TResult Function(List<String> cultures, List<String> faiths)
         cultureAndFaith,
-    required TResult Function(List<String> genders, String providerIdentifiesAs)
+    required TResult Function(
+            List<String> genders, String therapistIdentifiesAs)
         genderAndSexuality,
     required TResult Function() empty,
   }) {
@@ -1537,7 +1545,7 @@ class _$EmptyImpl extends _Empty {
     TResult? Function(String routeOfService, String typeOfService)? serviceType,
     TResult? Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult? Function(List<String> genders, String providerIdentifiesAs)?
+    TResult? Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult? Function()? empty,
   }) {
@@ -1553,7 +1561,7 @@ class _$EmptyImpl extends _Empty {
     TResult Function(String routeOfService, String typeOfService)? serviceType,
     TResult Function(List<String> cultures, List<String> faiths)?
         cultureAndFaith,
-    TResult Function(List<String> genders, String providerIdentifiesAs)?
+    TResult Function(List<String> genders, String therapistIdentifiesAs)?
         genderAndSexuality,
     TResult Function()? empty,
     required TResult orElse(),

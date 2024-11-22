@@ -1,8 +1,8 @@
-import 'package:siento_find_provider/core/result.dart';
-import 'package:siento_find_provider/data/data_sources/preferences_datasource.dart';
-import 'package:siento_find_provider/data/repository_error_handler.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_model.dart';
-import 'package:siento_find_provider/domain/repositories/preferences_repository.dart';
+import 'package:siento_find_therapist/core/result.dart';
+import 'package:siento_find_therapist/data/data_sources/preferences_datasource.dart';
+import 'package:siento_find_therapist/data/repository_error_handler.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_model.dart';
+import 'package:siento_find_therapist/domain/repositories/preferences_repository.dart';
 
 class PreferencesRepositoryImpl with RepositoryErrorHandler implements PreferencesRepository {
   final PreferencesDatasource preferencesDatasource;

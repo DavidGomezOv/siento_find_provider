@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:siento_find_provider/data/data_sources/preferences_datasource.dart';
-import 'package:siento_find_provider/data/repositories/preferences_repository_impl.dart';
-import 'package:siento_find_provider/domain/repositories/preferences_repository.dart';
-import 'package:siento_find_provider/domain/use_cases/preferences_use_cases.dart';
-import 'package:siento_find_provider/shared/preferences/state/preferences_notifier.dart';
+import 'package:siento_find_therapist/data/data_sources/preferences_datasource.dart';
+import 'package:siento_find_therapist/data/repositories/preferences_repository_impl.dart';
+import 'package:siento_find_therapist/domain/repositories/preferences_repository.dart';
+import 'package:siento_find_therapist/domain/use_cases/preferences_use_cases.dart';
+import 'package:siento_find_therapist/shared/preferences/state/preferences_notifier.dart';
 
 final preferencesRepositoryProvider = Provider<PreferencesRepository>(
   (ref) => PreferencesRepositoryImpl(

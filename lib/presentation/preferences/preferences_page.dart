@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_item_model.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_model.dart';
-import 'package:siento_find_provider/presentation/widgets/back_button_widget.dart';
-import 'package:siento_find_provider/presentation/widgets/custom_error_widget.dart';
-import 'package:siento_find_provider/shared/preferences/preferences_di_helper.dart';
-import 'package:siento_find_provider/theme/ui_colors.dart';
-import 'package:siento_find_provider/presentation/preferences/widgets/preference_item_widget.dart';
-import 'package:siento_find_provider/routes/app_router.dart';
-import 'package:siento_find_provider/theme/ui_text_style.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_item_model.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_model.dart';
+import 'package:siento_find_therapist/presentation/widgets/back_button_widget.dart';
+import 'package:siento_find_therapist/presentation/widgets/custom_error_widget.dart';
+import 'package:siento_find_therapist/shared/preferences/preferences_di_helper.dart';
+import 'package:siento_find_therapist/theme/ui_colors.dart';
+import 'package:siento_find_therapist/presentation/preferences/widgets/preference_item_widget.dart';
+import 'package:siento_find_therapist/routes/app_router.dart';
+import 'package:siento_find_therapist/theme/ui_text_style.dart';
 
 class PreferencesPage extends StatelessWidget {
   const PreferencesPage({super.key});

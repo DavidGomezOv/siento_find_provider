@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:siento_find_provider/core/enums.dart';
+import 'package:siento_find_therapist/core/enums.dart';
 
 part 'preference_setting_model.freezed.dart';
 
@@ -34,7 +34,7 @@ class PreferenceSettingModel with _$PreferenceSettingModel {
 
   const factory PreferenceSettingModel.genderAndSexuality({
     @Default([]) List<String> genders,
-    @Default('') String providerIdentifiesAs,
+    @Default('') String therapistIdentifiesAs,
   }) = _GenderAndSexualityPreference;
 
   const factory PreferenceSettingModel.empty() = _Empty;

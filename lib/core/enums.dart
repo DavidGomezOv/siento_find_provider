@@ -1,4 +1,4 @@
-enum ProviderType {
+enum TherapistType {
   therapy('Therapy'),
   group('Groups'),
   psychiatry('Psychiatry'),
@@ -7,7 +7,7 @@ enum ProviderType {
 
   final String displayValue;
 
-  const ProviderType(this.displayValue);
+  const TherapistType(this.displayValue);
 }
 
 enum PreferenceType {

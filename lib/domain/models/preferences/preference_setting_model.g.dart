@@ -99,7 +99,7 @@ _$GenderAndSexualityPreferenceImpl _$$GenderAndSexualityPreferenceImplFromJson(
               ?.map((e) => e as String)
               .toList() ??
           const [],
-      providerIdentifiesAs: json['providerIdentifiesAs'] as String? ?? '',
+      therapistIdentifiesAs: json['therapistIdentifiesAs'] as String? ?? '',
       $type: json['runtimeType'] as String?,
     );
 
@@ -107,7 +107,7 @@ Map<String, dynamic> _$$GenderAndSexualityPreferenceImplToJson(
         _$GenderAndSexualityPreferenceImpl instance) =>
     <String, dynamic>{
       'genders': instance.genders,
-      'providerIdentifiesAs': instance.providerIdentifiesAs,
+      'therapistIdentifiesAs': instance.therapistIdentifiesAs,
       'runtimeType': instance.$type,
     };
 

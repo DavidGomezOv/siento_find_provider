@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:siento_find_provider/theme/ui_colors.dart';
+import 'package:siento_find_therapist/theme/ui_colors.dart';
 
 class UiTextStyle {
   static String? nunito = GoogleFonts.nunito().fontFamily;

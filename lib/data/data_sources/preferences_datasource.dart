@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:siento_find_provider/data/datasource_error_handler.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_model.dart';
+import 'package:siento_find_therapist/data/datasource_error_handler.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_model.dart';
 
 class PreferencesDatasource with DatasourceErrorHandler {
   Future<PreferenceModel> getAllPreferences({required String userId}) async {

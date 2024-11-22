@@ -1,6 +1,6 @@
-import 'package:siento_find_provider/core/result.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_model.dart';
-import 'package:siento_find_provider/domain/repositories/preferences_repository.dart';
+import 'package:siento_find_therapist/core/result.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_model.dart';
+import 'package:siento_find_therapist/domain/repositories/preferences_repository.dart';
 
 class GetAllPreferencesUseCase {
   final PreferencesRepository preferencesRepository;

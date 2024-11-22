@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_item_model.dart';
-import 'package:siento_find_provider/domain/models/preferences/preference_setting_model.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_item_model.dart';
+import 'package:siento_find_therapist/domain/models/preferences/preference_setting_model.dart';
 
 part 'preference_model.freezed.dart';
 
